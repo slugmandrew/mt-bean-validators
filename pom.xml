@@ -88,8 +88,6 @@
 
 	<properties>
 		<jdk.version>1.7</jdk.version>
-		<!-- Convenience property to set the GWT version -->
-		<gwt.version>2.7.0</gwt.version>
 		<validation-api.version>1.0.0.GA</validation-api.version>
 		<hibernate-validator.version>4.1.0.Final</hibernate-validator.version>
 		<junit.version>4.12</junit.version>
@@ -101,6 +99,7 @@
 		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
 		<maven-source-plugin.version>3.0.0</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
 		<maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
@@ -173,7 +172,6 @@
 				<directory>src/main/resources</directory>
 			</resource>
 			<resource>
-				<!-- the java source files must be on the classpath during gwt:compile -->
 				<directory>src/main/java</directory>
 			</resource>
 		</resources>
@@ -183,19 +181,6 @@
 			</testResource>
 		</testResources>
 		<plugins>
-			<!-- GWT Maven Plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<version>${gwt.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>resources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -269,6 +254,7 @@
 						<id>attach-sources</id>
 						<goals>
 							<goal>jar-no-fork</goal>
+							<goal>test-jar</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -283,6 +269,23 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven-jar-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+<!-- 						<configuration> -->
+<!-- 							<includes> -->
+<!-- 								<include>src/test/java</include> -->
+<!-- 							</includes> -->
+<!-- 						</configuration> -->
 					</execution>
 				</executions>
 			</plugin>
