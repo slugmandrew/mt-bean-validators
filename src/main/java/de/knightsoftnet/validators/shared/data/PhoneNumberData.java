@@ -17,6 +17,8 @@ package de.knightsoftnet.validators.shared.data;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Objects;
+
 /**
  * phone number data.
  *
@@ -150,13 +152,7 @@ public class PhoneNumberData implements PhoneNumberExtendedInterface, Validation
 
   @Override
   public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + (this.countryCode == null ? 0 : this.countryCode.hashCode());
-    result = prime * result + (this.areaCode == null ? 0 : this.areaCode.hashCode());
-    result = prime * result + (this.lineNumber == null ? 0 : this.lineNumber.hashCode());
-    result = prime * result + (this.extension == null ? 0 : this.extension.hashCode());
-    return result;
+    return Objects.hash(this.countryCode, this.areaCode, this.lineNumber, this.extension);
   }
 
   @Override

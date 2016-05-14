@@ -17,6 +17,8 @@ package de.knightsoftnet.validators.shared.testcases;
 
 import de.knightsoftnet.validators.shared.beans.NotEmptyAlternateIfOtherIsEmptyTestBean;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,14 +40,19 @@ public class NotEmptyAlternateIfOieTestCases {
         new ArrayList<NotEmptyAlternateIfOtherIsEmptyTestBean>();
 
     correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", null, null));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", "", null));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", null, ""));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", "", ""));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", StringUtils.EMPTY, null));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", null, StringUtils.EMPTY));
+    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", StringUtils.EMPTY,
+        StringUtils.EMPTY));
     correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", "filled", null));
     correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", null, "filled"));
     correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", "filled", "filled"));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", "filled", ""));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", "", "filled"));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", "filled", StringUtils.EMPTY));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean("filled", StringUtils.EMPTY, "filled"));
 
     return correctCases;
   }
@@ -61,14 +68,21 @@ public class NotEmptyAlternateIfOieTestCases {
     correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, "filled", null));
     correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, null, "filled"));
     correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, "filled", "filled"));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, "filled", ""));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, "", "filled"));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, "filled", StringUtils.EMPTY));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, StringUtils.EMPTY, "filled"));
 
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", "filled", null));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", null, "filled"));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", "filled", "filled"));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", "filled", ""));
-    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", "", "filled"));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, "filled", null));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, null, "filled"));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, "filled", "filled"));
+    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, "filled",
+        StringUtils.EMPTY));
+    correctCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY,
+        StringUtils.EMPTY, "filled"));
     return correctCases;
   }
 
@@ -81,14 +95,18 @@ public class NotEmptyAlternateIfOieTestCases {
     final List<NotEmptyAlternateIfOtherIsEmptyTestBean> wrongCases =
         new ArrayList<NotEmptyAlternateIfOtherIsEmptyTestBean>();
     wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, null, null));
-    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, "", null));
-    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, null, ""));
-    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, "", ""));
+    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, StringUtils.EMPTY, null));
+    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(null, null, StringUtils.EMPTY));
+    wrongCases.add(
+        new NotEmptyAlternateIfOtherIsEmptyTestBean(null, StringUtils.EMPTY, StringUtils.EMPTY));
 
-    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", null, null));
-    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", "", null));
-    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", null, ""));
-    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean("", "", ""));
+    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, null, null));
+    wrongCases.add(
+        new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, StringUtils.EMPTY, null));
+    wrongCases.add(
+        new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, null, StringUtils.EMPTY));
+    wrongCases.add(new NotEmptyAlternateIfOtherIsEmptyTestBean(StringUtils.EMPTY, StringUtils.EMPTY,
+        StringUtils.EMPTY));
     return wrongCases;
   }
 }

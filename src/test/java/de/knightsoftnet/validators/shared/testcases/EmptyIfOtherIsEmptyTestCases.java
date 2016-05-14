@@ -17,6 +17,8 @@ package de.knightsoftnet.validators.shared.testcases;
 
 import de.knightsoftnet.validators.shared.beans.EmptyIfOtherIsEmptyTestBean;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +38,9 @@ public class EmptyIfOtherIsEmptyTestCases {
     final List<EmptyIfOtherIsEmptyTestBean> correctCases =
         new ArrayList<EmptyIfOtherIsEmptyTestBean>();
     correctCases.add(new EmptyIfOtherIsEmptyTestBean(null, null));
-    correctCases.add(new EmptyIfOtherIsEmptyTestBean(null, ""));
-    correctCases.add(new EmptyIfOtherIsEmptyTestBean("", null));
-    correctCases.add(new EmptyIfOtherIsEmptyTestBean("", ""));
+    correctCases.add(new EmptyIfOtherIsEmptyTestBean(null, StringUtils.EMPTY));
+    correctCases.add(new EmptyIfOtherIsEmptyTestBean(StringUtils.EMPTY, null));
+    correctCases.add(new EmptyIfOtherIsEmptyTestBean(StringUtils.EMPTY, StringUtils.EMPTY));
     return correctCases;
   }
 
@@ -51,7 +53,7 @@ public class EmptyIfOtherIsEmptyTestCases {
     final List<EmptyIfOtherIsEmptyTestBean> correctCases =
         new ArrayList<EmptyIfOtherIsEmptyTestBean>();
     correctCases.add(new EmptyIfOtherIsEmptyTestBean("filled", null));
-    correctCases.add(new EmptyIfOtherIsEmptyTestBean("filled", ""));
+    correctCases.add(new EmptyIfOtherIsEmptyTestBean("filled", StringUtils.EMPTY));
     correctCases.add(new EmptyIfOtherIsEmptyTestBean("filled", "filled"));
     return correctCases;
   }
@@ -65,7 +67,7 @@ public class EmptyIfOtherIsEmptyTestCases {
     final List<EmptyIfOtherIsEmptyTestBean> wrongCases =
         new ArrayList<EmptyIfOtherIsEmptyTestBean>();
     wrongCases.add(new EmptyIfOtherIsEmptyTestBean(null, "filled"));
-    wrongCases.add(new EmptyIfOtherIsEmptyTestBean("", "filled"));
+    wrongCases.add(new EmptyIfOtherIsEmptyTestBean(StringUtils.EMPTY, "filled"));
     return wrongCases;
   }
 }

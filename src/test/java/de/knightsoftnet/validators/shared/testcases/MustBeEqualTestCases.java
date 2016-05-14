@@ -17,6 +17,8 @@ package de.knightsoftnet.validators.shared.testcases;
 
 import de.knightsoftnet.validators.shared.beans.MustBeEqualTestBean;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,8 @@ public class MustBeEqualTestCases {
   public static final List<MustBeEqualTestBean> getEmptyTestBeans() {
     final List<MustBeEqualTestBean> correctCases = new ArrayList<MustBeEqualTestBean>();
     correctCases.add(new MustBeEqualTestBean(null, null, null));
-    correctCases.add(new MustBeEqualTestBean("", "", ""));
+    correctCases
+        .add(new MustBeEqualTestBean(StringUtils.EMPTY, StringUtils.EMPTY, StringUtils.EMPTY));
     return correctCases;
   }
 
@@ -58,9 +61,9 @@ public class MustBeEqualTestCases {
   public static final List<MustBeEqualTestBean> getWrongTestBeans() {
     final List<MustBeEqualTestBean> wrongCases = new ArrayList<MustBeEqualTestBean>();
     wrongCases.add(new MustBeEqualTestBean("old", null, "filled"));
-    wrongCases.add(new MustBeEqualTestBean("old", "", "filled"));
+    wrongCases.add(new MustBeEqualTestBean("old", StringUtils.EMPTY, "filled"));
     wrongCases.add(new MustBeEqualTestBean("old", "filled", null));
-    wrongCases.add(new MustBeEqualTestBean("old", "filled", ""));
+    wrongCases.add(new MustBeEqualTestBean("old", "filled", StringUtils.EMPTY));
     wrongCases.add(new MustBeEqualTestBean("old", "filled", "filledother"));
     return wrongCases;
   }

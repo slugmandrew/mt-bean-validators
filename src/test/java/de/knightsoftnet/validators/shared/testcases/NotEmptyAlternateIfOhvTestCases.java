@@ -17,6 +17,8 @@ package de.knightsoftnet.validators.shared.testcases;
 
 import de.knightsoftnet.validators.shared.beans.NotEmptyAlternateIfOtherHasValueTestBean;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,26 +40,34 @@ public class NotEmptyAlternateIfOhvTestCases {
         new ArrayList<NotEmptyAlternateIfOtherHasValueTestBean>();
 
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, null, null));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "", null));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, null, ""));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "", ""));
+    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, StringUtils.EMPTY, null));
+    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, null, StringUtils.EMPTY));
+    correctCases.add(
+        new NotEmptyAlternateIfOtherHasValueTestBean(null, StringUtils.EMPTY, StringUtils.EMPTY));
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "filled", null));
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, null, "filled"));
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "filled", "filled"));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "filled", ""));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "", "filled"));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "filled", StringUtils.EMPTY));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherHasValueTestBean(null, StringUtils.EMPTY, "filled"));
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(null, "filled", "filled"));
 
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, null, null));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "", null));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, null, ""));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "", ""));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, StringUtils.EMPTY, null));
+    correctCases
+        .add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, null, StringUtils.EMPTY));
+    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, StringUtils.EMPTY,
+        StringUtils.EMPTY));
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "filled", null));
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, null, "filled"));
     correctCases
         .add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "filled", "filled"));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "filled", ""));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "", "filled"));
+    correctCases.add(
+        new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "filled", StringUtils.EMPTY));
+    correctCases.add(
+        new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, StringUtils.EMPTY, "filled"));
     correctCases
         .add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.FALSE, "filled", "filled"));
 
@@ -73,9 +83,11 @@ public class NotEmptyAlternateIfOhvTestCases {
     final List<NotEmptyAlternateIfOtherHasValueTestBean> correctCases =
         new ArrayList<NotEmptyAlternateIfOtherHasValueTestBean>();
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, "filled", null));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, "filled", ""));
+    correctCases.add(
+        new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, "filled", StringUtils.EMPTY));
     correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, null, "filled"));
-    correctCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, "", "filled"));
+    correctCases.add(
+        new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, StringUtils.EMPTY, "filled"));
     correctCases
         .add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, "filled", "filled"));
     return correctCases;
@@ -90,9 +102,12 @@ public class NotEmptyAlternateIfOhvTestCases {
     final List<NotEmptyAlternateIfOtherHasValueTestBean> wrongCases =
         new ArrayList<NotEmptyAlternateIfOtherHasValueTestBean>();
     wrongCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, null, null));
-    wrongCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, null, ""));
-    wrongCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, "", null));
-    wrongCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, "", ""));
+    wrongCases
+        .add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, null, StringUtils.EMPTY));
+    wrongCases
+        .add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, StringUtils.EMPTY, null));
+    wrongCases.add(new NotEmptyAlternateIfOtherHasValueTestBean(Boolean.TRUE, StringUtils.EMPTY,
+        StringUtils.EMPTY));
     return wrongCases;
   }
 }

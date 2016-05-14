@@ -17,6 +17,8 @@ package de.knightsoftnet.validators.shared.testcases;
 
 import de.knightsoftnet.validators.shared.beans.LevenshteinDistanceTestBean;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +38,7 @@ public class LevenshteinDistanceTestCases {
     final List<LevenshteinDistanceTestBean> correctCases =
         new ArrayList<LevenshteinDistanceTestBean>();
     correctCases.add(new LevenshteinDistanceTestBean(null, null));
-    correctCases.add(new LevenshteinDistanceTestBean("", ""));
+    correctCases.add(new LevenshteinDistanceTestBean(StringUtils.EMPTY, StringUtils.EMPTY));
     return correctCases;
   }
 

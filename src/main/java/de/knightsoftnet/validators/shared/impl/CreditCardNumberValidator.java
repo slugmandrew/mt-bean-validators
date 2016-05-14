@@ -63,8 +63,7 @@ public class CreditCardNumberValidator implements ConstraintValidator<CreditCard
       return true;
     }
     if (pvalue.length() > LENGTH_CREDIT_CARDNUMBER) {
-      // credit card number is to long, but that's handled by size
-      // annotation
+      // credit card number is to long, but that's handled by size annotation
       return true;
     }
     return CHECK_CREDIT_CARD.isValid(pvalue);

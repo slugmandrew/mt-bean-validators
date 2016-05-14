@@ -15,6 +15,7 @@
 
 package de.knightsoftnet.validators.shared;
 
+import de.knightsoftnet.validators.shared.impl.BicValidator;
 import de.knightsoftnet.validators.shared.impl.BicValueValidator;
 
 import java.lang.annotation.Documented;
@@ -45,7 +46,7 @@ import javax.validation.Payload;
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE,
     ElementType.CONSTRUCTOR, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@AlternateSize(size1 = BicValueValidator.BIC_LENGTH_MIN, size2 = BicValueValidator.BIC_LENGTH_MAX)
+@AlternateSize(size1 = BicValidator.BIC_LENGTH_MIN, size2 = BicValidator.BIC_LENGTH_MAX)
 public @interface BicValue {
   /**
    * localized message.
@@ -55,12 +56,12 @@ public @interface BicValue {
   /**
    * groups to use.
    */
-  Class<?>[]groups() default {};
+  Class<?>[] groups() default {};
 
   /**
    * payload whatever.
    */
-  Class<? extends Payload>[]payload() default {};
+  Class<? extends Payload>[] payload() default {};
 
   /**
    * should whitespaces be ignored (true/false).
@@ -79,6 +80,6 @@ public @interface BicValue {
     /**
      * bic value.
      */
-    BicValue[]value();
+    BicValue[] value();
   }
 }

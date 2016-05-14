@@ -41,6 +41,11 @@ public class BicValidator implements ConstraintValidator<Bic, Object> {
    * definition of BIC length maximum.
    */
   public static final int BIC_LENGTH_MAX = 11;
+  /**
+   * regular expression to check bic value.
+   */
+  public static final String BIC_REGEX =
+      "^[A-Z]{4}[A-Z]{2}([01][A-Z]|[A-Z2-9][A-Z0-9])(XXX|[A-WYZ0-9][A-Z0-9]{2}|)$";
 
   /**
    * map of swift countries and the length of the ibans.
@@ -86,8 +91,7 @@ public class BicValidator implements ConstraintValidator<Bic, Object> {
       // to short or to long, but it's handled by size validator!
       return true;
     }
-    if (!valueAsString
-        .matches("^[A-Z]{4}[A-Z]{2}([01][A-Z]|[A-Z2-9][A-Z0-9])(XXX|[A-WYZ0-9][A-Z0-9]{2}|)$")) {
+    if (!valueAsString.matches(BIC_REGEX)) {
       // format is wrong!
       return false;
     }

@@ -33,15 +33,6 @@ import javax.validation.ConstraintValidatorContext;
  *
  */
 public class BicValueValidator implements ConstraintValidator<BicValue, Object> {
-  /**
-   * definition of BIC length minimum.
-   */
-  public static final int BIC_LENGTH_MIN = 8;
-
-  /**
-   * definition of BIC length maximum.
-   */
-  public static final int BIC_LENGTH_MAX = 11;
 
   /**
    * map of the bic values.
@@ -82,17 +73,17 @@ public class BicValueValidator implements ConstraintValidator<BicValue, Object> 
       // empty field is ok
       return true;
     }
-    if (valueAsString.length() != BIC_LENGTH_MIN && valueAsString.length() != BIC_LENGTH_MAX) {
+    if (valueAsString.length() != BicValidator.BIC_LENGTH_MIN
+        && valueAsString.length() != BicValidator.BIC_LENGTH_MAX) {
       // to short or to long, but it's handled by size validator!
       return true;
     }
-    if (!valueAsString
-        .matches("^[A-Z]{4}[A-Z]{2}([01][A-Z]|[A-Z2-9][A-Z0-9])(XXX|[A-WYZ0-9][A-Z0-9]{2}|)$")) {
+    if (!valueAsString.matches(BicValidator.BIC_REGEX)) {
       // format is wrong!
       return false;
     }
     // final BicMapConstants BIC_MAP = CreateClass.create(BicMapConstants.class);
-    return BIC_MAP.bics().containsKey(valueAsString)
-        || BIC_MAP.bics().containsKey(StringUtils.substring(valueAsString, 0, BIC_LENGTH_MIN));
+    return BIC_MAP.bics().containsKey(valueAsString) || BIC_MAP.bics()
+        .containsKey(StringUtils.substring(valueAsString, 0, BicValidator.BIC_LENGTH_MIN));
   }
 }

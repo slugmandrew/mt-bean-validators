@@ -17,6 +17,8 @@ package de.knightsoftnet.validators.shared.testcases;
 
 import de.knightsoftnet.validators.shared.beans.NotEmptyIfOtherIsNotEmptyTestBean;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +39,9 @@ public class NotEmptyIfOtherIsNotEmptyTestCases {
     final List<NotEmptyIfOtherIsNotEmptyTestBean> correctCases =
         new ArrayList<NotEmptyIfOtherIsNotEmptyTestBean>();
     correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean(null, null));
-    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean(null, ""));
-    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean("", null));
-    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean("", ""));
+    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean(null, StringUtils.EMPTY));
+    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean(StringUtils.EMPTY, null));
+    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean(StringUtils.EMPTY, StringUtils.EMPTY));
     return correctCases;
   }
 
@@ -52,7 +54,7 @@ public class NotEmptyIfOtherIsNotEmptyTestCases {
     final List<NotEmptyIfOtherIsNotEmptyTestBean> correctCases =
         new ArrayList<NotEmptyIfOtherIsNotEmptyTestBean>();
     correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean("filled", null));
-    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean("filled", ""));
+    correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean("filled", StringUtils.EMPTY));
     correctCases.add(new NotEmptyIfOtherIsNotEmptyTestBean("filled", "filled"));
     return correctCases;
   }
@@ -66,7 +68,7 @@ public class NotEmptyIfOtherIsNotEmptyTestCases {
     final List<NotEmptyIfOtherIsNotEmptyTestBean> wrongCases =
         new ArrayList<NotEmptyIfOtherIsNotEmptyTestBean>();
     wrongCases.add(new NotEmptyIfOtherIsNotEmptyTestBean(null, "filled"));
-    wrongCases.add(new NotEmptyIfOtherIsNotEmptyTestBean("", "filled"));
+    wrongCases.add(new NotEmptyIfOtherIsNotEmptyTestBean(StringUtils.EMPTY, "filled"));
     return wrongCases;
   }
 }
