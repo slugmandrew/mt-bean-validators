@@ -1,7 +1,7 @@
 mt-bean-validators
 ===================
 
-A collection of JSR-303 bean validators
+A collection of JSR-303 bean validators.
 
 Included Validators - single field
 ----------------------------------
@@ -66,6 +66,6 @@ Add the following to your POM file, that's all:
     <dependency>
       <groupId>de.knightsoft-net</groupId>
       <artifactId>mt-bean-validators</artifactId>
-      <version>0.9.13-SNAPSHOT</version>
+      <version>0.10.0</version>
     </dependency>
 ```
