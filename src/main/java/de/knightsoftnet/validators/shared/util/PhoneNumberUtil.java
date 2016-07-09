@@ -444,9 +444,10 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatE123WithPos(final ValueWithPos<String> pphoneNumber,
       final String pcountryCode) {
-    return this.formatE123WithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode),
-        CreatePhoneCountryConstantsClass.create().countryMap()
-            .get(StringUtils.defaultString(pcountryCode)));
+    return this.valueWithPosDefaults(this.formatE123WithPos(
+        this.parsePhoneNumber(pphoneNumber, pcountryCode), CreatePhoneCountryConstantsClass.create()
+            .countryMap().get(StringUtils.defaultString(pcountryCode))),
+        pphoneNumber);
   }
 
   /**
@@ -497,7 +498,8 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatE123International(
       final ValueWithPos<String> pphoneNumber) {
-    return this.formatE123InternationalWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(
+        this.formatE123InternationalWithPos(this.parsePhoneNumber(pphoneNumber)), pphoneNumber);
   }
 
   /**
@@ -530,7 +532,9 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatE123InternationalWithPos(
       final ValueWithPos<String> pphoneNumber, final String pcountryCode) {
-    return this.formatE123InternationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatE123InternationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)),
+        pphoneNumber);
   }
 
   /**
@@ -585,7 +589,8 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatE123National(final ValueWithPos<String> pphoneNumber) {
-    return this.formatE123NationalWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(
+        this.formatE123NationalWithPos(this.parsePhoneNumber(pphoneNumber)), pphoneNumber);
   }
 
   /**
@@ -642,7 +647,9 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatE123NationalWithPos(
       final ValueWithPos<String> pphoneNumber, final String pcountryCode) {
-    return this.formatE123NationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatE123NationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)),
+        pphoneNumber);
   }
 
   /**
@@ -713,7 +720,9 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatDin5008(final ValueWithPos<String> pphoneNumber) {
-    return this.formatDin5008WithPos(this.parsePhoneNumber(pphoneNumber), this.defaultCountryData);
+    return this.valueWithPosDefaults(
+        this.formatDin5008WithPos(this.parsePhoneNumber(pphoneNumber), this.defaultCountryData),
+        pphoneNumber);
   }
 
   /**
@@ -777,9 +786,10 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatDin5008WithPos(final ValueWithPos<String> pphoneNumber,
       final String pcountryCode) {
-    return this.formatDin5008WithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode),
-        CreatePhoneCountryConstantsClass.create().countryMap()
-            .get(StringUtils.defaultString(pcountryCode)));
+    return this.valueWithPosDefaults(this.formatDin5008WithPos(
+        this.parsePhoneNumber(pphoneNumber, pcountryCode), CreatePhoneCountryConstantsClass.create()
+            .countryMap().get(StringUtils.defaultString(pcountryCode))),
+        pphoneNumber);
   }
 
   /**
@@ -818,7 +828,8 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatDin5008International(
       final ValueWithPos<String> pphoneNumber) {
-    return this.formatDin5008InternationalWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(
+        this.formatDin5008InternationalWithPos(this.parsePhoneNumber(pphoneNumber)), pphoneNumber);
   }
 
   /**
@@ -864,8 +875,9 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatDin5008InternationalWithPos(
       final ValueWithPos<String> pphoneNumber, final String pcountryCode) {
-    return this
-        .formatDin5008InternationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatDin5008InternationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)),
+        pphoneNumber);
   }
 
   /**
@@ -924,7 +936,8 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatDin5008National(final ValueWithPos<String> pphoneNumber) {
-    return this.formatDin5008NationalWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(
+        this.formatDin5008NationalWithPos(this.parsePhoneNumber(pphoneNumber)), pphoneNumber);
   }
 
   /**
@@ -981,7 +994,9 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatDin5008NationalWithPos(
       final ValueWithPos<String> pphoneNumber, final String pcountryCode) {
-    return this.formatDin5008NationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatDin5008NationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)),
+        pphoneNumber);
   }
 
   /**
@@ -1062,7 +1077,8 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatRfc3966(final ValueWithPos<String> pphoneNumber) {
-    return this.formatRfc3966WithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(this.formatRfc3966WithPos(this.parsePhoneNumber(pphoneNumber)),
+        pphoneNumber);
   }
 
   /**
@@ -1095,7 +1111,8 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatRfc3966WithPos(final ValueWithPos<String> pphoneNumber,
       final String pcountryCode) {
-    return this.formatRfc3966WithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatRfc3966WithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)), pphoneNumber);
   }
 
   /**
@@ -1161,7 +1178,8 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatMs(final ValueWithPos<String> pphoneNumber) {
-    return this.formatMsWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(this.formatMsWithPos(this.parsePhoneNumber(pphoneNumber)),
+        pphoneNumber);
   }
 
   /**
@@ -1195,7 +1213,8 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatMsWithPos(final ValueWithPos<String> pphoneNumber,
       final String pcountryCode) {
-    return this.formatMsWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatMsWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)), pphoneNumber);
   }
 
   /**
@@ -1273,7 +1292,8 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatUrl(final ValueWithPos<String> pphoneNumber) {
-    return this.formatUrlWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(this.formatUrlWithPos(this.parsePhoneNumber(pphoneNumber)),
+        pphoneNumber);
   }
 
   /**
@@ -1309,7 +1329,8 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatUrlWithPos(final ValueWithPos<String> pphoneNumber,
       final String pcountryCode) {
-    return this.formatUrlWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatUrlWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)), pphoneNumber);
   }
 
   /**
@@ -1368,7 +1389,9 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatCommon(final ValueWithPos<String> pphoneNumber) {
-    return this.formatCommonWithPos(this.parsePhoneNumber(pphoneNumber), this.defaultCountryData);
+    return this.valueWithPosDefaults(
+        this.formatCommonWithPos(this.parsePhoneNumber(pphoneNumber), this.defaultCountryData),
+        pphoneNumber);
   }
 
   /**
@@ -1433,9 +1456,10 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatCommonWithPos(final ValueWithPos<String> pphoneNumber,
       final String pcountryCode) {
-    return this.formatCommonWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode),
-        CreatePhoneCountryConstantsClass.create().countryMap()
-            .get(StringUtils.defaultString(pcountryCode)));
+    return this.valueWithPosDefaults(this.formatCommonWithPos(
+        this.parsePhoneNumber(pphoneNumber, pcountryCode), CreatePhoneCountryConstantsClass.create()
+            .countryMap().get(StringUtils.defaultString(pcountryCode))),
+        pphoneNumber);
   }
 
   /**
@@ -1474,7 +1498,8 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatCommonInternational(
       final ValueWithPos<String> pphoneNumber) {
-    return this.formatCommonInternationalWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(
+        this.formatCommonInternationalWithPos(this.parsePhoneNumber(pphoneNumber)), pphoneNumber);
   }
 
   /**
@@ -1531,7 +1556,9 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatCommonInternationalWithPos(
       final ValueWithPos<String> pphoneNumber, final String pcountryCode) {
-    return this.formatCommonInternationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatCommonInternationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)),
+        pphoneNumber);
   }
 
   /**
@@ -1621,7 +1648,8 @@ public class PhoneNumberUtil {
    * @return formated phone number as String with new cursor position
    */
   public final ValueWithPos<String> formatCommonNational(final ValueWithPos<String> pphoneNumber) {
-    return this.formatCommonNationalWithPos(this.parsePhoneNumber(pphoneNumber));
+    return this.valueWithPosDefaults(
+        this.formatCommonNationalWithPos(this.parsePhoneNumber(pphoneNumber)), pphoneNumber);
   }
 
   /**
@@ -1665,7 +1693,9 @@ public class PhoneNumberUtil {
    */
   public final ValueWithPos<String> formatCommonNationalWithPos(
       final ValueWithPos<String> pphoneNumber, final String pcountryCode) {
-    return this.formatCommonNationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode));
+    return this.valueWithPosDefaults(
+        this.formatCommonNationalWithPos(this.parsePhoneNumber(pphoneNumber, pcountryCode)),
+        pphoneNumber);
   }
 
   /**
@@ -1773,6 +1803,19 @@ public class PhoneNumberUtil {
       }
     }
     return formatedSb.toString();
+  }
+
+  private ValueWithPos<String> valueWithPosDefaults(final ValueWithPos<String> pformatValueWithPos,
+      final ValueWithPos<String> pdefaultNumber) {
+    if (pformatValueWithPos != null //
+        && (StringUtils.isEmpty(pformatValueWithPos.getValue()) //
+            || StringUtils.startsWith(pdefaultNumber.getValue(), pformatValueWithPos.getValue())
+                && !Character.isDigit(pdefaultNumber.getValue()
+                    .charAt(StringUtils.length(pdefaultNumber.getValue()) - 1)))) {
+      pformatValueWithPos.setValue(pdefaultNumber.getValue());
+      pformatValueWithPos.setPos(pdefaultNumber.getPos());
+    }
+    return pformatValueWithPos;
   }
 
   /**
