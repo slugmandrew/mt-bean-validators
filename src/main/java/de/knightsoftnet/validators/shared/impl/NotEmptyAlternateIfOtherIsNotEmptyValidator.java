@@ -30,8 +30,8 @@ import javax.validation.ConstraintValidatorContext;
  *
  *
  */
-public class NotEmptyAlternateIfOtherIsNotEmptyValidator implements
-    ConstraintValidator<NotEmptyAlternateIfOtherIsNotEmpty, Object> {
+public class NotEmptyAlternateIfOtherIsNotEmptyValidator
+    implements ConstraintValidator<NotEmptyAlternateIfOtherIsNotEmpty, Object> {
 
   /**
    * error message key.
@@ -93,9 +93,9 @@ public class NotEmptyAlternateIfOtherIsNotEmptyValidator implements
 
   private void switchContext(final ConstraintValidatorContext pcontext) {
     pcontext.disableDefaultConstraintViolation();
-    pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldCheckName)
+    pcontext.buildConstraintViolationWithTemplate(this.message).addPropertyNode(this.fieldCheckName)
         .addConstraintViolation();
     pcontext.buildConstraintViolationWithTemplate(this.message)
-        .addNode(this.fieldAlternateCheckName).addConstraintViolation();
+        .addPropertyNode(this.fieldAlternateCheckName).addConstraintViolation();
   }
 }

@@ -52,8 +52,8 @@ public class GtinTest extends AbstractValidationTest<GtinTestBean> {
   @Test
   public final void testWrongChecksumGtinIsWrong() {
     for (final GtinTestBean testBean : GtinTestCases.getWrongTestBeans()) {
-      super
-          .validationTest(testBean, false, "de.knightsoftnet.validators.shared.impl.GtinValidator");
+      super.validationTest(testBean, false,
+          "de.knightsoftnet.validators.shared.impl.GtinValidator");
     }
   }
 
@@ -74,8 +74,7 @@ public class GtinTest extends AbstractValidationTest<GtinTestBean> {
   @Test
   public final void testNotNumericGtinIsWrong() {
     for (final GtinTestBean testBean : GtinTestCases.getNotNumericTestBeans()) {
-      super.validationTest(testBean, false,
-          "org.hibernate.validator.constraints.impl.DigitsValidatorForString");
+      super.validationTest(testBean, false, DIGITS_VALIDATOR);
     }
   }
 }

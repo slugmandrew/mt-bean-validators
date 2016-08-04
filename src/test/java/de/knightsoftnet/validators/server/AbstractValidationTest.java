@@ -31,12 +31,17 @@ import javax.validation.Validator;
  *
  * @param <E> type of bean to test
  */
-public class AbstractValidationTest<E> {
+public abstract class AbstractValidationTest<E> { // NOPMD
 
   /**
    * logger for logging messages.
    */
   private static final Logger LOG = Logger.getLogger(AbstractValidationTest.class);
+
+  protected static final String SIZE_VALIDATOR = "org.hibernate.validator.internal."
+      + "constraintvalidators.bv.size.SizeValidatorForCharSequence";
+  protected static final String DIGITS_VALIDATOR = "org.hibernate.validator.internal."
+      + "constraintvalidators.bv.DigitsValidatorForCharSequence";
 
   /**
    * test validation.

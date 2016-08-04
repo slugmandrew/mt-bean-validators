@@ -128,8 +128,7 @@ public class PhoneNumberValueValidator implements ConstraintValidator<PhoneNumbe
         countryCode = StringUtils.upperCase(countryCode);
       }
       this.phoneNumberUtil.setCountryCode(countryCode);
-      final PhoneNumberData parsedNumber =
-          (PhoneNumberData) this.phoneNumberUtil.parsePhoneNumber(phoneNumber);
+      final PhoneNumberData parsedNumber = this.phoneNumberUtil.parsePhoneNumber(phoneNumber);
 
       if (parsedNumber.isValid()) {
         if (this.allowDin5008 && (StringUtils.equals(phoneNumber,
@@ -169,7 +168,7 @@ public class PhoneNumberValueValidator implements ConstraintValidator<PhoneNumbe
 
   private void switchContext(final ConstraintValidatorContext pcontext) {
     pcontext.disableDefaultConstraintViolation();
-    pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldPhoneNumber)
-        .addConstraintViolation();
+    pcontext.buildConstraintViolationWithTemplate(this.message)
+        .addPropertyNode(this.fieldPhoneNumber).addConstraintViolation();
   }
 }

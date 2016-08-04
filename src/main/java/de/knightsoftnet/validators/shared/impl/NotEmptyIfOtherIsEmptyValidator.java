@@ -29,8 +29,8 @@ import javax.validation.ConstraintValidatorContext;
  * @author Manfred Tremmel
  *
  */
-public class NotEmptyIfOtherIsEmptyValidator implements
-    ConstraintValidator<NotEmptyIfOtherIsEmpty, Object> {
+public class NotEmptyIfOtherIsEmptyValidator
+    implements ConstraintValidator<NotEmptyIfOtherIsEmpty, Object> {
 
   /**
    * error message key.
@@ -84,7 +84,7 @@ public class NotEmptyIfOtherIsEmptyValidator implements
 
   private void switchContext(final ConstraintValidatorContext pcontext) {
     pcontext.disableDefaultConstraintViolation();
-    pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldCheckName)
+    pcontext.buildConstraintViolationWithTemplate(this.message).addPropertyNode(this.fieldCheckName)
         .addConstraintViolation();
   }
 }

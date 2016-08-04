@@ -115,7 +115,7 @@ public class VatIdValidator implements ConstraintValidator<VatId, Object> {
 
   private void switchContext(final ConstraintValidatorContext pcontext) {
     pcontext.disableDefaultConstraintViolation();
-    pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldVatId)
+    pcontext.buildConstraintViolationWithTemplate(this.message).addPropertyNode(this.fieldVatId)
         .addConstraintViolation();
   }
 

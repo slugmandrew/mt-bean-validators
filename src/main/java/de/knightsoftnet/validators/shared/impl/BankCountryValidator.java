@@ -31,6 +31,9 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class BankCountryValidator implements ConstraintValidator<BankCountry, Object> {
 
+  private static final String NOT_EMPTY_MESSAGE =
+      "{org.hibernate.validator.constraints.NotEmpty.message}";
+
   /**
    * error message key.
    */
@@ -90,17 +93,13 @@ public class BankCountryValidator implements ConstraintValidator<BankCountry, Ob
         return true;
       } else if (StringUtils.isEmpty(valueIban)) {
         pcontext.disableDefaultConstraintViolation();
-        pcontext
-            .buildConstraintViolationWithTemplate(
-                "{org.hibernate.validator.constraints.NotEmpty.message}")
-            .addNode(this.fieldIban).addConstraintViolation();
+        pcontext.buildConstraintViolationWithTemplate(NOT_EMPTY_MESSAGE)
+            .addPropertyNode(this.fieldIban).addConstraintViolation();
         return false;
       } else if (StringUtils.isEmpty(valueBic)) {
         pcontext.disableDefaultConstraintViolation();
-        pcontext
-            .buildConstraintViolationWithTemplate(
-                "{org.hibernate.validator.constraints.NotEmpty.message}")
-            .addNode(this.fieldBic).addConstraintViolation();
+        pcontext.buildConstraintViolationWithTemplate(NOT_EMPTY_MESSAGE)
+            .addPropertyNode(this.fieldBic).addConstraintViolation();
         return false;
       } else if (StringUtils.length(valueIban) >= IbanValidator.IBAN_LENGTH_MIN
           && StringUtils.length(valueBic) >= BicValidator.BIC_LENGTH_MIN) {
@@ -153,11 +152,11 @@ public class BankCountryValidator implements ConstraintValidator<BankCountry, Ob
         }
         pcontext.disableDefaultConstraintViolation();
         if (!ibanCodeMatches) {
-          pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldIban)
-              .addConstraintViolation();
+          pcontext.buildConstraintViolationWithTemplate(this.message)
+              .addPropertyNode(this.fieldIban).addConstraintViolation();
         }
         if (!bicCodeMatches) {
-          pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldBic)
+          pcontext.buildConstraintViolationWithTemplate(this.message).addPropertyNode(this.fieldBic)
               .addConstraintViolation();
         }
         return false;

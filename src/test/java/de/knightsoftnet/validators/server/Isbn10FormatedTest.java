@@ -63,8 +63,7 @@ public class Isbn10FormatedTest extends AbstractValidationTest<Isbn10FormatedTes
   @Test
   public final void testToSmallIsbn10IsWrong() {
     for (final Isbn10FormatedTestBean testBean : Isbn10FormatedTestCases.getToSmallTestBeans()) {
-      super.validationTest(testBean, false,
-          "org.hibernate.validator.constraints.impl.SizeValidatorForString");
+      super.validationTest(testBean, false, SIZE_VALIDATOR);
     }
   }
 
@@ -74,8 +73,7 @@ public class Isbn10FormatedTest extends AbstractValidationTest<Isbn10FormatedTes
   @Test
   public final void testToBigIsbn10IsWrong() {
     for (final Isbn10FormatedTestBean testBean : Isbn10FormatedTestCases.getToBigTestBeans()) {
-      super.validationTest(testBean, false,
-          "org.hibernate.validator.constraints.impl.SizeValidatorForString");
+      super.validationTest(testBean, false, SIZE_VALIDATOR);
     }
   }
 

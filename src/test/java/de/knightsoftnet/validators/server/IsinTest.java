@@ -52,8 +52,8 @@ public class IsinTest extends AbstractValidationTest<IsinTestBean> {
   @Test
   public final void testWrongChecksumIsinIsWrong() {
     for (final IsinTestBean testBean : IsinTestCases.getWrongTestBeans()) {
-      super
-          .validationTest(testBean, false, "de.knightsoftnet.validators.shared.impl.IsinValidator");
+      super.validationTest(testBean, false,
+          "de.knightsoftnet.validators.shared.impl.IsinValidator");
     }
   }
 
@@ -63,8 +63,7 @@ public class IsinTest extends AbstractValidationTest<IsinTestBean> {
   @Test
   public final void testWrongSizeIsinIsWrong() {
     for (final IsinTestBean testBean : IsinTestCases.getWrongSizeTestBeans()) {
-      super.validationTest(testBean, false,
-          "org.hibernate.validator.constraints.impl.SizeValidatorForString");
+      super.validationTest(testBean, false, SIZE_VALIDATOR);
     }
   }
 }

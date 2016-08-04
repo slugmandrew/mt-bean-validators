@@ -111,7 +111,7 @@ public class PostalCodeValidator implements ConstraintValidator<PostalCode, Obje
 
   private void switchContext(final ConstraintValidatorContext pcontext) {
     pcontext.disableDefaultConstraintViolation();
-    pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldPostalCode)
-        .addConstraintViolation();
+    pcontext.buildConstraintViolationWithTemplate(this.message)
+        .addPropertyNode(this.fieldPostalCode).addConstraintViolation();
   }
 }

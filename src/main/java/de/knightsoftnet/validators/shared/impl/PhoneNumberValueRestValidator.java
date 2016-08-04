@@ -169,7 +169,7 @@ public class PhoneNumberValueRestValidator
 
   private void switchContext(final ConstraintValidatorContext pcontext) {
     pcontext.disableDefaultConstraintViolation();
-    pcontext.buildConstraintViolationWithTemplate(this.message).addNode(this.fieldPhoneNumber)
-        .addConstraintViolation();
+    pcontext.buildConstraintViolationWithTemplate(this.message)
+        .addPropertyNode(this.fieldPhoneNumber).addConstraintViolation();
   }
 }
