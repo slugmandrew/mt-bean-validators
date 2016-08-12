@@ -87,8 +87,8 @@
 	</contributors>
 
 	<properties>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<validation-api.version>1.1.0.Final</validation-api.version>
 		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
 		<javax.el-api.version>2.2.5</javax.el-api.version>
@@ -172,9 +172,9 @@
 		</dependency>
 	</dependencies>
 
-  <build>
-    <pluginManagement>
-      <plugins>
+	<build>
+		<pluginManagement>
+			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
@@ -185,45 +185,42 @@
 						<arguments>-Psonatype-oss-release</arguments>
 					</configuration>
 				</plugin>
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>${maven-resources-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>${maven-surefire-plugin.version}</version>
-          <configuration>
-            <trimStackTrace>false</trimStackTrace>
-            <excludes>
-              <exclude>**/Abstract*Test.java</exclude>
-            </excludes>
-           </configuration>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>${maven-compiler-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>${maven-source-plugin.version}</version>
-          <!--
-            ! Starting with Maven 3.4.0 the following
-            ! is not needed anymore.
-          -->
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <phase>DISABLE_FORKED_LIFECYCLE_MSOURCES-13</phase>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+					<configuration>
+						<trimStackTrace>false</trimStackTrace>
+						<excludes>
+							<exclude>**/Abstract*Test.java</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+					<!-- ! Starting with Maven 3.4.0 the following ! is not needed anymore. -->
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>DISABLE_FORKED_LIFECYCLE_MSOURCES-13</phase>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
-  <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-source-plugin</artifactId>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>new-sources</id>
@@ -256,11 +253,11 @@
 						<goals>
 							<goal>test-jar</goal>
 						</goals>
-<!-- 						<configuration> -->
-<!-- 							<includes> -->
-<!-- 								<include>src/test/java</include> -->
-<!-- 							</includes> -->
-<!-- 						</configuration> -->
+						<!-- <configuration> -->
+						<!-- <includes> -->
+						<!-- <include>src/test/java</include> -->
+						<!-- </includes> -->
+						<!-- </configuration> -->
 					</execution>
 				</executions>
 			</plugin>
