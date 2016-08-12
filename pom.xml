@@ -203,19 +203,33 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven-compiler-plugin.version}</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${maven-source-plugin.version}</version>
+          <!--
+            ! Starting with Maven 3.4.0 the following
+            ! is not needed anymore.
+          -->
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>DISABLE_FORKED_LIFECYCLE_MSOURCES-13</phase>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>attach-sources</id>
+						<id>new-sources</id>
 						<goals>
 							<goal>jar-no-fork</goal>
-							<goal>test-jar</goal>
+							<goal>test-jar-no-fork</goal>
 						</goals>
 					</execution>
 				</executions>
