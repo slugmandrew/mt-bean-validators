@@ -263,7 +263,6 @@
 				</dependencies>
 				<configuration>
 					<configLocation>checkstyle.xml</configLocation>
-					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
