@@ -206,6 +206,30 @@
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>${maven-resources-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>copy-localization-resources</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<!-- this is important -->
+								<overwrite>true</overwrite>
+								<!-- target -->
+								<outputDirectory>${basedir}/target/classes</outputDirectory>
+								<resources>
+									<resource>
+										<!-- source -->
+										<directory>src/main/resources/de/knightsoftnet/validators/client</directory>
+										<includes>
+											<include>ValidationMessages*.properties</include>
+										</includes>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -271,11 +295,6 @@
 						<goals>
 							<goal>test-jar</goal>
 						</goals>
-						<!-- <configuration> -->
-						<!-- <includes> -->
-						<!-- <include>src/test/java</include> -->
-						<!-- </includes> -->
-						<!-- </configuration> -->
 					</execution>
 				</executions>
 			</plugin>
