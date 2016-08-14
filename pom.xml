@@ -16,11 +16,11 @@
 	<groupId>de.knightsoft-net</groupId>
 	<artifactId>mt-bean-validators</artifactId>
 	<packaging>jar</packaging>
-	<version>0.19.0-SNAPSHOT</version>
+	<version>0.20.0</version>
 	<name>MT Bean Validators</name>
 	<inceptionYear>2016</inceptionYear>
 	<description>
-		The MT Bean Validators is a collection of JSR-303 bean validators. It's extracted from
+		The MT Bean Validators is a collection of JSR-303/JSR-349 bean validators. It's extracted from
 		GWT Bean Validators and contains no dependencies to GWT.
 	</description>
 	<url>https://github.com/ManfredTremmel/mt-bean-validators</url>
@@ -107,7 +107,7 @@
 		<maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-		<checkstyle.version>7.0</checkstyle.version>
+		<checkstyle.version>7.1</checkstyle.version>
 		<maven-pmd-plugin.version>3.6</maven-pmd-plugin.version>
 		<findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
 		<cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>

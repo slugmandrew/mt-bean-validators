@@ -1,7 +1,7 @@
 mt-bean-validators
 ===================
 
-A collection of JSR-303 bean validators.
+A collection of JSR-303/JSR-349 bean validators.
 
 Included Validators - single field
 ----------------------------------
@@ -66,6 +66,8 @@ Add the following to your POM file, that's all:
     <dependency>
       <groupId>de.knightsoft-net</groupId>
       <artifactId>mt-bean-validators</artifactId>
-      <version>0.10.1</version>
+      <version>0.20.0</version>
     </dependency>
 ```
+
+With version 0.20.0 I've switched from validation-api 1.0 to 1.1, if your project needs api 1.0 compatibility, please use version 0.10.1 of this packag.
