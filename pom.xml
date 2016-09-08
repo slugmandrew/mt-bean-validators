@@ -16,7 +16,7 @@
 	<groupId>de.knightsoft-net</groupId>
 	<artifactId>mt-bean-validators</artifactId>
 	<packaging>jar</packaging>
-	<version>0.20.0</version>
+	<version>0.20.1</version>
 	<name>MT Bean Validators</name>
 	<inceptionYear>2016</inceptionYear>
 	<description>
