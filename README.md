@@ -66,7 +66,7 @@ Add the following to your POM file, that's all:
     <dependency>
       <groupId>de.knightsoft-net</groupId>
       <artifactId>mt-bean-validators</artifactId>
-      <version>0.20.1</version>
+      <version>0.20.3</version>
     </dependency>
 ```
 
