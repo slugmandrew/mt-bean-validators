@@ -17,27 +17,29 @@ package de.knightsoftnet.validators.shared.beans;
 
 import de.knightsoftnet.validators.shared.VatId;
 
-@VatId
+import java.util.Objects;
+
+@VatId(fieldCountryCode = "postalCodeTestBean.countryCode")
 public class VatIdTestBean {
 
-  private final String countryCode;
+  private final PostalCodeTestBean postalCodeTestBean;
 
   private final String vatId;
 
   /**
    * constructor initializing fields.
    *
-   * @param pcountryCode country code
+   * @param ppostalCodeTestBean country code
    * @param pvatId postal code
    */
-  public VatIdTestBean(final String pcountryCode, final String pvatId) {
+  public VatIdTestBean(final PostalCodeTestBean ppostalCodeTestBean, final String pvatId) {
     super();
-    this.countryCode = pcountryCode;
+    this.postalCodeTestBean = ppostalCodeTestBean;
     this.vatId = pvatId;
   }
 
-  public String getCountryCode() {
-    return this.countryCode;
+  public final PostalCodeTestBean getPostalCodeTestBean() {
+    return this.postalCodeTestBean;
   }
 
   public String getVatId() {
@@ -46,6 +48,7 @@ public class VatIdTestBean {
 
   @Override
   public String toString() {
-    return "VatIdTestBean [countryCode=" + this.countryCode + ", vatId=" + this.vatId + "]";
+    return "VatIdTestBean [postalCodeTestBean=" + Objects.toString(this.postalCodeTestBean)
+        + ", vatId=" + this.vatId + "]";
   }
 }

@@ -16,8 +16,8 @@
 package de.knightsoftnet.validators.shared.impl;
 
 import de.knightsoftnet.validators.shared.EmptyIfOtherIsEmpty;
+import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
@@ -69,8 +69,10 @@ public class EmptyIfOtherIsEmptyValidator
       return true;
     }
     try {
-      final String fieldCheckValue = BeanUtils.getProperty(pvalue, this.fieldCheckName);
-      final String fieldCompareValue = BeanUtils.getProperty(pvalue, this.fieldCompareName);
+      final String fieldCheckValue =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCheckName);
+      final String fieldCompareValue =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCompareName);
       if (StringUtils.isNotEmpty(fieldCheckValue) && StringUtils.isEmpty(fieldCompareValue)) {
         this.switchContext(pcontext);
         return false;
