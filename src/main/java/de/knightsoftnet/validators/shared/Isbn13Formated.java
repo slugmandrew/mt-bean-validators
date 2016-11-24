@@ -29,10 +29,10 @@ import javax.validation.constraints.Size;
 
 /**
  * The annotated element must be a valid International Standard Book Number in the long (13 digits)
- * format.<br />
+ * format.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid. Minus signs as separators must be set on the correct positions.<br />
- * There are format, size and checksum tests by apache commons validation routines.<br />
+ * are considered valid. Minus signs as separators must be set on the correct positions.<br>
+ * There are format, size and checksum tests by apache commons validation routines.<br>
  *
  * @author Manfred Tremmel
  *

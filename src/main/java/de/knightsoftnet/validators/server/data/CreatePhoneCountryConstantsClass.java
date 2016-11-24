@@ -15,6 +15,7 @@
 
 package de.knightsoftnet.validators.server.data;
 
+import de.knightsoftnet.validators.shared.data.AbstractCreateClass;
 import de.knightsoftnet.validators.shared.data.PhoneCountryConstantsImpl;
 import de.knightsoftnet.validators.shared.data.PhoneCountrySharedConstants;
 
@@ -45,55 +46,65 @@ public class CreatePhoneCountryConstantsClass extends CreateClassHelper {
   /**
    * Instantiates a class via deferred binding.
    *
+   * @param plocale language to create data for
    * @return the new instance, which must be cast to the requested class
    */
   public static PhoneCountrySharedConstants create(final Locale plocale) {
-    if (!phoneCountryConstants.containsKey(plocale)) { // NOPMD it's thread save!
+    if (!CreatePhoneCountryConstantsClass.phoneCountryConstants.containsKey(plocale)) { // NOPMD
       synchronized (PhoneCountryConstantsImpl.class) {
-        if (!phoneCountryConstants.containsKey(plocale)) {
-          phoneCountryConstants.put(plocale, createPhoneCountryConstants(plocale));
+        if (!CreatePhoneCountryConstantsClass.phoneCountryConstants.containsKey(plocale)) {
+          CreatePhoneCountryConstantsClass.phoneCountryConstants.put(plocale,
+              AbstractCreateClass.createPhoneCountryConstants(plocale));
         }
       }
     }
-    return phoneCountryConstants.get(plocale);
+    return CreatePhoneCountryConstantsClass.phoneCountryConstants.get(plocale);
   }
 
   /**
    * read phone country names.
    *
+   * @param plocale language to create data for
    * @return map of phone country code and name
    */
   public static Map<String, String> readPhoneCountryNames(final Locale plocale) {
-    return readMapFromProperties("PhoneCountryNameConstants", plocale, "phoneCountryNames");
+    return CreateClassHelper.readMapFromProperties("PhoneCountryNameConstants", plocale,
+        "phoneCountryNames");
   }
 
   /**
    * read phone country codes and country iso codes.
    *
+   * @param plocale language to create data for
    * @return map of phone country code and country iso code
    */
   public static Map<String, String> readPhoneCountryCodes(final Locale plocale) {
-    return readMapFromProperties("PhoneCountryCodeConstants", plocale, "phoneCountryCodes");
+    return CreateClassHelper.readMapFromProperties("PhoneCountryCodeConstants", plocale,
+        "phoneCountryCodes");
   }
 
   /**
    * read phone region codes for one country.
    *
+   * @param pphoneCountryCode country code of the phone number
+   * @param plocale language to create data for
    * @return map of area code and area name
    */
   public static Map<String, String> readPhoneRegionCodes(final String pphoneCountryCode,
       final Locale plocale) {
-    return readMapFromProperties("PhoneRegionCode" + pphoneCountryCode + "Constants", plocale,
+    return CreateClassHelper.readMapFromProperties(
+        "PhoneRegionCode" + pphoneCountryCode + "Constants", plocale,
         "phoneRegionCodes" + pphoneCountryCode);
   }
 
   /**
    * read phone trunk an exit code map from property file.
    *
+   * @param plocale language to create data for
    * @return map of country code and combined string of trunk an exit code
    */
   public static Map<String, String> readPhoneTrunkAndExitCodes(final Locale plocale) {
-    return readMapFromProperties("PhoneCountryTrunkAndExitCodesConstants", plocale,
-        "phoneTrunkAndExitCodes");
+    return CreateClassHelper.readMapFromProperties("PhoneCountryTrunkAndExitCodesConstants",
+        plocale, "phoneTrunkAndExitCodes");
   }
 }

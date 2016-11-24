@@ -32,8 +32,8 @@ import javax.validation.Payload;
  * <li>country code (option <code>fieldCountryCode</code>)</li>
  * <li>postal code/zip (option <code>fieldPostalCode</code>)</li>
  * </ul>
- * The postal code is checked against country specific rules for validity.<br />
- * Supported types are beans, <code>null</code> elements are considered valid.<br />
+ * The postal code is checked against country specific rules for validity.<br>
+ * Supported types are beans, <code>null</code> elements are considered valid.<br>
  * If <code>allowLowerCaseCountryCode</code> is set to true, lower case country codes are accepted.
  *
  * @author Manfred Tremmel

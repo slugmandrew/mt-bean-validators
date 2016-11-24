@@ -28,9 +28,9 @@ import javax.validation.Payload;
 import javax.validation.constraints.Size;
 
 /**
- * The annotated element must be a valid International Bank Account Number.<br />
+ * The annotated element must be a valid International Bank Account Number.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid. Whitespaces must be correct set as separators.<br />
+ * are considered valid. Whitespaces must be correct set as separators.<br>
  * There are format, size, SEPA country and checksum tests by apache commons validation routines.
  *
  * @author Manfred Tremmel

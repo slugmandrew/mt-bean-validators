@@ -27,9 +27,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * The annotated element must be a valid regular expression.<br />
+ * The annotated element must be a valid regular expression.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid.<br />
+ * are considered valid.<br>
  *
  * @author Manfred Tremmel
  *

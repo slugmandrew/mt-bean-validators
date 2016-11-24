@@ -38,8 +38,8 @@ import javax.validation.Payload;
  * </ul>
  * The Levenshtein distance between the entry of <code>fieldCompare</code> and <code>field</code> is
  * calculated, it must be equal or greater then the value of minDistance. not be empty (null or "").
- * <br />
- * Supported types are beans, <code>null</code> elements are considered valid.<br />
+ * <br>
+ * Supported types are beans, <code>null</code> elements are considered valid.<br>
  *
  * @author Valentin Pricop
  *

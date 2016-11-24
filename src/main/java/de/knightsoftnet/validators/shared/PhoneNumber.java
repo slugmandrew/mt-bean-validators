@@ -27,12 +27,12 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * The annotated element must be a valid phone number format.<br />
+ * The annotated element must be a valid phone number format.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
  * are considered valid. Different formats can be turned on/off with <code>allowDin5008</code>,
  * <code>allowE123</code>, <code>allowUri</code>, <code>allowMs</code> and <code>allowCommon</code>.
- * By default all formats are turned on, you can turn it off with <code>false</code>.<br />
- * There are numeric, size and checksum tests by apache commons validation routines.<br />
+ * By default all formats are turned on, you can turn it off with <code>false</code>.<br>
+ * There are numeric, size and checksum tests by apache commons validation routines.<br>
  *
  * @author Manfred Tremmel
  *

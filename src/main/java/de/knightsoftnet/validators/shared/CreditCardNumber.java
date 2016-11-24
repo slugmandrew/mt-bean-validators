@@ -28,10 +28,10 @@ import javax.validation.Payload;
 import javax.validation.constraints.Size;
 
 /**
- * The annotated element must be a valid credit card number.<br />
+ * The annotated element must be a valid credit card number.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid.<br />
- * There are format, size and LUN checksum tests by apache commons validation routines.<br />
+ * are considered valid.<br>
+ * There are format, size and LUN checksum tests by apache commons validation routines.<br>
  * There are no tests for credit card validity!
  *
  * @author Manfred Tremmel

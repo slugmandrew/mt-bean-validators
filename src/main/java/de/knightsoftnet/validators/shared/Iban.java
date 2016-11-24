@@ -28,10 +28,10 @@ import javax.validation.OverridesAttribute;
 import javax.validation.Payload;
 
 /**
- * The annotated element must be a valid International Bank Account Number.<br />
+ * The annotated element must be a valid International Bank Account Number.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
  * are considered valid. Whitespaces as separators are allowed when <code>ignoreWhitspaces</code> is
- * set to <code>true</code>.<br />
+ * set to <code>true</code>.<br>
  * There are format, size, SEPA country and checksum tests by apache commons validation routines.
  *
  * @author Manfred Tremmel

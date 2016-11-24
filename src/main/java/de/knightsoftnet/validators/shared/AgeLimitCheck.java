@@ -17,18 +17,18 @@ package de.knightsoftnet.validators.shared;
 
 import de.knightsoftnet.validators.shared.impl.AgeLimitCheckValidator;
 
+import javax.validation.Constraint;
+import javax.validation.Payload;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-
 /**
- * The annotated Date must be <code>minYears</code> or more in the past.<br />
- * Supported types are Dates, <code>null</code> elements are considered valid.<br />
+ * The annotated Date must be <code>minYears</code> or more in the past.<br>
+ * Supported types are Dates, <code>null</code> elements are considered valid.<br>
  *
  * @author Manfred Tremmel
  *

@@ -34,8 +34,8 @@ import javax.validation.Payload;
  * <code>valueCompare</code>)</li>
  * </ul>
  * if the entry of <code>fieldCompare</code> matches <code>valueCompare</code>, <code>field</code>
- * must not be empty (null or "").<br />
- * Supported types are beans, <code>null</code> elements are considered valid.<br />
+ * must not be empty (null or "").<br>
+ * Supported types are beans, <code>null</code> elements are considered valid.<br>
  *
  * @author Manfred Tremmel
  *

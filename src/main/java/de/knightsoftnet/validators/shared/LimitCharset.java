@@ -27,10 +27,10 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * The annotated element must contain only characters which are allowed in the given charset.<br />
+ * The annotated element must contain only characters which are allowed in the given charset.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid.<br />
- * The <code>charset</code> must be given as parameter.<br />
+ * are considered valid.<br>
+ * The <code>charset</code> must be given as parameter.<br>
  *
  * @author Manfred Tremmel
  *

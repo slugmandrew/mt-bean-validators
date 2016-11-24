@@ -35,8 +35,8 @@ import javax.validation.Payload;
  * <li>add the error to field2 (option <code>addErrorToField2</code>, default true)</li>
  * </ul>
  * the entry of <code>field1</code> must not be equal to the entry of <code>field2</code>, can be
- * used e.g. for password old and password new fields.<br />
- * Supported types are beans, <code>null</code> elements are considered valid.<br />
+ * used e.g. for password old and password new fields.<br>
+ * Supported types are beans, <code>null</code> elements are considered valid.<br>
  *
  * @author Manfred Tremmel
  *

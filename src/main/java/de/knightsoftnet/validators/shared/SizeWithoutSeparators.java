@@ -27,9 +27,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * The annotated element size must be between the specified boundaries (included).<br />
+ * The annotated element size must be between the specified boundaries (included).<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid.<br />
+ * are considered valid.<br>
  * With the following options separator characters can be removed before size is checked:
  * <ul>
  * <li>ignoreWhiteSpaces (true/false, default false)</li>

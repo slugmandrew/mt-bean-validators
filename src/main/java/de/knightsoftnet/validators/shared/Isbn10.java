@@ -29,11 +29,11 @@ import javax.validation.Payload;
 
 /**
  * The annotated element must be a valid International Standard Book Number in the short (10 digits)
- * format.<br />
+ * format.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
  * are considered valid. Minus signs as separators are allowed, when <code>ignoreSeparators</code>
- * is set to <code>true</code>.<br />
- * There are numeric, size and checksum tests by apache commons validation routines.<br />
+ * is set to <code>true</code>.<br>
+ * There are numeric, size and checksum tests by apache commons validation routines.<br>
  *
  * @author Manfred Tremmel
  *

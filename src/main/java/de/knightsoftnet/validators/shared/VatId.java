@@ -33,8 +33,8 @@ import javax.validation.Payload;
  * <li>vat id (option <code>fieldVatId</code>)</li>
  * </ul>
  * The vat id is checked against country specific rules for validity. Checksum checks are done, when
- * available.<br />
- * Supported types are beans, <code>null</code> elements are considered valid.<br />
+ * available.<br>
+ * Supported types are beans, <code>null</code> elements are considered valid.<br>
  * If <code>allowLowerCaseCountryCode</code> is set to true, lower case country codes are accepted.
  *
  * @author Manfred Tremmel

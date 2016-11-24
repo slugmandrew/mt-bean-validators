@@ -28,11 +28,11 @@ import javax.validation.Payload;
 import javax.validation.constraints.Size;
 
 /**
- * The annotated element must be a valid eMail.<br />
+ * The annotated element must be a valid eMail.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid.<br />
+ * are considered valid.<br>
  * There are format tests, domain validity tests, and size checks by apache commons validation
- * routines.<br />
+ * routines.<br>
  *
  * @author Manfred Tremmel
  *

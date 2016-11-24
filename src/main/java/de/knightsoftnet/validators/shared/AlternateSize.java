@@ -27,8 +27,8 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * The annotated element size must be exactly match size1 or size2.<br />
- * Supported types are Strings <code>null</code> elements are considered valid.<br />
+ * The annotated element size must be exactly match size1 or size2.<br>
+ * Supported types are Strings <code>null</code> elements are considered valid.<br>
  * With the following options separator characters can be removed before size is checked:
  * <ul>
  * <li>ignoreWhiteSpaces (true/false, default false)</li>

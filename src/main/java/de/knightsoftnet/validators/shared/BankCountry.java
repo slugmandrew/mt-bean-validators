@@ -33,8 +33,8 @@ import javax.validation.Payload;
  * <li>iban (option <code>fieldIban</code>)</li>
  * <li>bic (option <code>fieldBic</code>)</li>
  * </ul>
- * The country codes of iban and bic are checked against the country code for validity.<br />
- * Supported types are beans, <code>null</code> elements are considered valid.<br />
+ * The country codes of iban and bic are checked against the country code for validity.<br>
+ * Supported types are beans, <code>null</code> elements are considered valid.<br>
  * If <code>allowLowerCaseCountryCode</code> is set to true, lower case country codes are accepted.
  *
  * @author Manfred Tremmel

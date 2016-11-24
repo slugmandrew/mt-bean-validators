@@ -30,10 +30,10 @@ import javax.validation.constraints.Size;
 
 /**
  * The annotated element must be a valid Global Location Number (until 2009 known as International
- * Location Number).<br />
+ * Location Number).<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid.<br />
- * There are numeric, size and checksum tests by apache commons validation routines.<br />
+ * are considered valid.<br>
+ * There are numeric, size and checksum tests by apache commons validation routines.<br>
  *
  * @author Manfred Tremmel
  *

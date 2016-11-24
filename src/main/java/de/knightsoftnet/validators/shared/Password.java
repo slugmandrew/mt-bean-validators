@@ -29,9 +29,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * The annotated element must be a valid password.<br />
+ * The annotated element must be a valid password.<br>
  * Supported types are Strings, other Objects are transfered to Strings, <code>null</code> elements
- * are considered valid.<br />
+ * are considered valid.<br>
  * There are the following rules checked (with <code>minRules</code> parameter the number rules can
  * be defined that have to be fulfilled):
  * <ul>
