@@ -27,6 +27,7 @@ Included Validators - single field
 |Isbn13 | `ignoreSeparators` (default false) | checks length, format and checksum of a International Standard Book Number, only long version (13 digits) is allowed, isbn must be written in one block, if `ignoreSeparators` is set to true, minus signs are filtered
 |Isbn13Formated | - | checks length, format and checksum of a International Standard Book Number, only long version (13 digits) is allowed, isbn must be grouped with - as separator
 |Isin | - | checks length, format and checksum of a International Securities Identification Number
+|LimitCharset | `charset` (no default) | checks a string if all characters are part of the given `charset` (e.g. ISO-8859-1)
 |Password | `minRules` (no default), `blacklist` (default empty), `disalowedStartChars` (default empty) and `maxRepeatChar` (default 0) | checks password for a number of rules, uper case characters, lower case character, digits and special characters, with `minRules` you can define, how many rules must be fulfilled. The `blacklist` can contain comma separated words which are not allowed in the password. With `disalowedStartChars` you can define charactes which are not allowed as first character of the password. With `maxRepeatChar` you can limit the repeat of a single character in a row.
 |PhoneNumber | `allowDin5008`, `allowE123`, `allowUri`, `allowMs`, and `allowCommon` (default for all true) | checks phone number, with the parameters you can disable formats
 |RegularExpression | - | checks if value itself is a regular expression
@@ -66,7 +67,7 @@ Add the following to your POM file, that's all:
     <dependency>
       <groupId>de.knightsoft-net</groupId>
       <artifactId>mt-bean-validators</artifactId>
-      <version>0.20.1</version>
+      <version>0.21.0</version>
     </dependency>
 ```
 

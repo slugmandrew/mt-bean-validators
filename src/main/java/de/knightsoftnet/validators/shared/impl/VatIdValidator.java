@@ -18,8 +18,8 @@ package de.knightsoftnet.validators.shared.impl;
 import de.knightsoftnet.validators.server.data.CreateVatIdMapConstantsClass;
 import de.knightsoftnet.validators.shared.VatId;
 import de.knightsoftnet.validators.shared.data.VatIdMapSharedConstants;
+import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
@@ -85,12 +85,13 @@ public class VatIdValidator implements ConstraintValidator<VatId, Object> {
       return true;
     }
     try {
-      String countryCode = BeanUtils.getProperty(pvalue, this.fieldCountryCode);
-      final String vatId = BeanUtils.getProperty(pvalue, this.fieldVatId);
-      if (StringUtils.isEmpty(vatId)) {
+      String countryCode =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
+      if (StringUtils.isEmpty(countryCode)) {
         return true;
       }
-      if (StringUtils.isEmpty(countryCode)) {
+      final String vatId = BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldVatId);
+      if (StringUtils.isEmpty(vatId)) {
         return true;
       }
 

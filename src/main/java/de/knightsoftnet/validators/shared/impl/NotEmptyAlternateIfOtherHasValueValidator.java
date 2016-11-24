@@ -16,8 +16,8 @@
 package de.knightsoftnet.validators.shared.impl;
 
 import de.knightsoftnet.validators.shared.NotEmptyAlternateIfOtherHasValue;
+import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
@@ -79,10 +79,12 @@ public class NotEmptyAlternateIfOtherHasValueValidator
       return true;
     }
     try {
-      final String fieldCheckValue = BeanUtils.getProperty(pvalue, this.fieldCheckName);
+      final String fieldCheckValue =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCheckName);
       final String fieldAlternateCheckValue =
-          BeanUtils.getProperty(pvalue, this.fieldAlternateCheckName);
-      final String fieldCompareValue = BeanUtils.getProperty(pvalue, this.fieldCompareName);
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldAlternateCheckName);
+      final String fieldCompareValue =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCompareName);
       if (StringUtils.isEmpty(fieldCheckValue) && StringUtils.isEmpty(fieldAlternateCheckValue)
           && StringUtils.equals(this.valueCompare, fieldCompareValue)) {
         this.switchContext(pcontext);

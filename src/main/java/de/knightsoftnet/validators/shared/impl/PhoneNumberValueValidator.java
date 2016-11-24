@@ -17,9 +17,9 @@ package de.knightsoftnet.validators.shared.impl;
 
 import de.knightsoftnet.validators.shared.PhoneNumberValue;
 import de.knightsoftnet.validators.shared.data.PhoneNumberData;
+import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 import de.knightsoftnet.validators.shared.util.PhoneNumberUtil;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
@@ -118,8 +118,10 @@ public class PhoneNumberValueValidator implements ConstraintValidator<PhoneNumbe
       return true;
     }
     try {
-      String countryCode = BeanUtils.getProperty(pvalue, this.fieldCountryCode);
-      final String phoneNumber = BeanUtils.getProperty(pvalue, this.fieldPhoneNumber);
+      String countryCode =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
+      final String phoneNumber =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldPhoneNumber);
       if (StringUtils.isEmpty(phoneNumber)) {
         return true;
       }

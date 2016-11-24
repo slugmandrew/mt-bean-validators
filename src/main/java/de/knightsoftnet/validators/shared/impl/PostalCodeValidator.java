@@ -18,8 +18,8 @@ package de.knightsoftnet.validators.shared.impl;
 import de.knightsoftnet.validators.server.data.CreatePostalCodesMapConstantsClass;
 import de.knightsoftnet.validators.shared.PostalCode;
 import de.knightsoftnet.validators.shared.data.PostalCodesMapSharedConstants;
+import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
@@ -84,8 +84,10 @@ public class PostalCodeValidator implements ConstraintValidator<PostalCode, Obje
       return true;
     }
     try {
-      String countryCode = BeanUtils.getProperty(pvalue, this.fieldCountryCode);
-      final String postalCode = BeanUtils.getProperty(pvalue, this.fieldPostalCode);
+      String countryCode =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
+      final String postalCode =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldPostalCode);
       if (StringUtils.isEmpty(postalCode)) {
         return true;
       }

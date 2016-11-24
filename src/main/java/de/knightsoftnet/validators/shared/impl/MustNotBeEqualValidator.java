@@ -16,8 +16,8 @@
 package de.knightsoftnet.validators.shared.impl;
 
 import de.knightsoftnet.validators.shared.MustNotBeEqual;
+import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
@@ -80,8 +80,10 @@ public class MustNotBeEqualValidator implements ConstraintValidator<MustNotBeEqu
       return true;
     }
     try {
-      final String field1Value = BeanUtils.getProperty(pvalue, this.field1Name);
-      final String field2Value = BeanUtils.getProperty(pvalue, this.field2Name);
+      final String field1Value =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field1Name);
+      final String field2Value =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field2Name);
       if (StringUtils.isEmpty(field1Value) && StringUtils.isEmpty(field2Value)) {
         return true;
       }

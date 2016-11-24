@@ -15,40 +15,24 @@
 
 package de.knightsoftnet.validators.shared.beans;
 
-import de.knightsoftnet.validators.shared.VatId;
+import de.knightsoftnet.validators.shared.LimitCharset;
 
-import java.util.Objects;
+public class LimitCharsetTestBean {
 
-@VatId(fieldCountryCode = "postalCodeTestBean.countryCode")
-public class VatIdTestBean {
+  @LimitCharset(charset = "ISO-8859-1")
+  private final String text;
 
-  private final PostalCodeTestBean postalCodeTestBean;
-
-  private final String vatId;
-
-  /**
-   * constructor initializing fields.
-   *
-   * @param ppostalCodeTestBean country code
-   * @param pvatId postal code
-   */
-  public VatIdTestBean(final PostalCodeTestBean ppostalCodeTestBean, final String pvatId) {
+  public LimitCharsetTestBean(final String ptext) {
     super();
-    this.postalCodeTestBean = ppostalCodeTestBean;
-    this.vatId = pvatId;
+    this.text = ptext;
   }
 
-  public final PostalCodeTestBean getPostalCodeTestBean() {
-    return this.postalCodeTestBean;
-  }
-
-  public String getVatId() {
-    return this.vatId;
+  public String getText() {
+    return this.text;
   }
 
   @Override
   public String toString() {
-    return "VatIdTestBean [postalCodeTestBean=" + Objects.toString(this.postalCodeTestBean)
-        + ", vatId=" + this.vatId + "]";
+    return "LimitCharsetTestBean [text=" + this.text + "]";
   }
 }

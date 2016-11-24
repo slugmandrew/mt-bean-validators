@@ -16,8 +16,8 @@
 package de.knightsoftnet.validators.shared.impl;
 
 import de.knightsoftnet.validators.shared.BankCountry;
+import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
@@ -85,9 +85,10 @@ public class BankCountryValidator implements ConstraintValidator<BankCountry, Ob
       return true;
     }
     try {
-      String valueCountry = BeanUtils.getProperty(pvalue, this.fieldCountryCode);
-      final String valueIban = BeanUtils.getProperty(pvalue, this.fieldIban);
-      final String valueBic = BeanUtils.getProperty(pvalue, this.fieldBic);
+      String valueCountry =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
+      final String valueIban = BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldIban);
+      final String valueBic = BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldBic);
 
       if (StringUtils.isEmpty(valueIban) && StringUtils.isEmpty(valueBic)) {
         return true;
