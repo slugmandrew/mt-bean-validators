@@ -88,7 +88,7 @@ public class LevenshteinDistanceValidator
       }
       this.switchContext(pcontext);
       return false;
-    } catch (final Exception e) {
+    } catch (final Exception pexception) {
       this.switchContext(pcontext);
       return false;
     }

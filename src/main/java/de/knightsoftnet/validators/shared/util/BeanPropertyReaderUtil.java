@@ -60,7 +60,7 @@ public final class BeanPropertyReaderUtil {
     String property;
     try {
       property = BeanUtils.getProperty(pbean, pname);
-    } catch (final NestedNullException e) {
+    } catch (final NestedNullException pexception) {
       property = null;
     }
     return property;

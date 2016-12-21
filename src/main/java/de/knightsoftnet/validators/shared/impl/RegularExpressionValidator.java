@@ -55,7 +55,7 @@ public class RegularExpressionValidator implements ConstraintValidator<RegularEx
       // execute regular expression, result doesn't matter
       "x".matches(pvalue);
       return true;
-    } catch (final Exception e) {
+    } catch (final Exception pexception) {
       // regular expression is invalid
       return false;
     }
