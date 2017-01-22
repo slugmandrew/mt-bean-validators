@@ -19,9 +19,12 @@ import de.knightsoftnet.validators.shared.VatId;
 
 import java.util.Objects;
 
+import javax.validation.Valid;
+
 @VatId(fieldCountryCode = "postalCodeTestBean.countryCode")
 public class VatIdTestBean {
 
+  @Valid
   private final PostalCodeTestBean postalCodeTestBean;
 
   private final String vatId;

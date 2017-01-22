@@ -38,5 +38,4 @@ public interface PhoneNumberInterface {
   String getExtension();
 
   void setExtension(String pextension);
-
 }

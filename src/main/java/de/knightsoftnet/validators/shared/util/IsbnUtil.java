@@ -124,7 +124,7 @@ public class IsbnUtil {
       return null;
     }
     final ValueWithPos<String> formatedValue =
-        isbn10FormatWithPos(new ValueWithPos<String>(pstring, -1));
+        isbn10FormatWithPos(new ValueWithPos<>(pstring, -1));
     return formatedValue.getValue();
   }
 
@@ -181,7 +181,7 @@ public class IsbnUtil {
       return null;
     }
     final ValueWithPos<String> formatedValue =
-        isbn13FormatWithPos(new ValueWithPos<String>(pstring, -1));
+        isbn13FormatWithPos(new ValueWithPos<>(pstring, -1));
     return formatedValue.getValue();
   }
 

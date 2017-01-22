@@ -101,5 +101,4 @@ public class IbanValidator implements ConstraintValidator<Iban, Object> {
 
     return CHECK_IBAN.isValid(valueAsString);
   }
-
 }

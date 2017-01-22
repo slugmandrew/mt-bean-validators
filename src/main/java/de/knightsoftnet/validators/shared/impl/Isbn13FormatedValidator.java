@@ -18,6 +18,7 @@ package de.knightsoftnet.validators.shared.impl;
 import de.knightsoftnet.validators.shared.Isbn13Formated;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.ISBNValidator;
 
 import java.util.Objects;
 
@@ -39,8 +40,7 @@ public class Isbn13FormatedValidator implements ConstraintValidator<Isbn13Format
   /**
    * apache commons class to check/calculate GLN/EAN13 check sums.
    */
-  private static final org.apache.commons.validator.routines.ISBNValidator CHECK_ISBN =
-      new org.apache.commons.validator.routines.ISBNValidator();
+  private static final ISBNValidator CHECK_ISBN = new ISBNValidator();
 
   /**
    * {@inheritDoc} initialize the validator.

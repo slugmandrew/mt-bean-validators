@@ -62,5 +62,4 @@ public class UrlValidator implements ConstraintValidator<Url, String> {
     }
     return org.apache.commons.validator.routines.UrlValidator.getInstance().isValid(pvalue);
   }
-
 }

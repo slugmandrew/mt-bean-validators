@@ -60,5 +60,4 @@ public class RegularExpressionValidator implements ConstraintValidator<RegularEx
       return false;
     }
   }
-
 }

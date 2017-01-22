@@ -15,7 +15,9 @@
 
 package de.knightsoftnet.validators.shared.util;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Locale Util, get locale for language string.
@@ -24,6 +26,23 @@ import java.util.Locale;
  *
  */
 public class LocaleUtil {
+  private static final Map<String, Locale> DEFAULT_MAP = new HashMap<>();
+
+  static {
+    LocaleUtil.DEFAULT_MAP.put("DE_DE", Locale.GERMANY);
+    LocaleUtil.DEFAULT_MAP.put("DE", Locale.GERMANY);
+    LocaleUtil.DEFAULT_MAP.put("EN_US", Locale.US);
+    LocaleUtil.DEFAULT_MAP.put("EN_UK", Locale.UK);
+    LocaleUtil.DEFAULT_MAP.put("EN_CA", Locale.CANADA);
+    LocaleUtil.DEFAULT_MAP.put("FR_FR", Locale.FRANCE);
+    LocaleUtil.DEFAULT_MAP.put("FR_CA", Locale.CANADA_FRENCH);
+    LocaleUtil.DEFAULT_MAP.put("ZH_CN", Locale.CHINA);
+    LocaleUtil.DEFAULT_MAP.put("ZH_TW", Locale.TAIWAN);
+    LocaleUtil.DEFAULT_MAP.put("ZH", Locale.CHINESE);
+    LocaleUtil.DEFAULT_MAP.put("JP", Locale.JAPAN);
+    LocaleUtil.DEFAULT_MAP.put("IT", Locale.ITALY);
+    LocaleUtil.DEFAULT_MAP.put("KO", Locale.KOREA);
+  }
 
   /**
    * convert language string to Locale.
@@ -37,30 +56,8 @@ public class LocaleUtil {
       locale = null;
     } else {
       final String localeStringUp = planguage.toUpperCase().replace('-', '_');
-      if ("DE_DE".equals(localeStringUp) || "DE".equals(localeStringUp)) {
-        locale = java.util.Locale.GERMANY;
-      } else if ("EN_US".equals(localeStringUp)) {
-        locale = java.util.Locale.US;
-      } else if ("EN_UK".equals(localeStringUp)) {
-        locale = java.util.Locale.UK;
-      } else if ("EN_CA".equals(localeStringUp)) {
-        locale = java.util.Locale.CANADA;
-      } else if ("FR_FR".equals(localeStringUp)) {
-        locale = java.util.Locale.FRANCE;
-      } else if ("FR_CA".equals(localeStringUp)) {
-        locale = java.util.Locale.CANADA_FRENCH;
-      } else if ("ZH_CN".equals(localeStringUp)) {
-        locale = java.util.Locale.CHINA;
-      } else if ("ZH_TW".equals(localeStringUp)) {
-        locale = java.util.Locale.TAIWAN;
-      } else if ("ZH".equals(localeStringUp)) {
-        locale = java.util.Locale.CHINESE;
-      } else if ("JP".equals(localeStringUp)) {
-        locale = java.util.Locale.JAPAN;
-      } else if ("IT".equals(localeStringUp)) {
-        locale = java.util.Locale.ITALY;
-      } else if ("KO".equals(localeStringUp)) {
-        locale = java.util.Locale.KOREA;
+      if (LocaleUtil.DEFAULT_MAP.containsKey(localeStringUp)) {
+        locale = LocaleUtil.DEFAULT_MAP.get(localeStringUp);
       } else if (localeStringUp.contains("_")) {
         final String[] lcoaleSplitted = localeStringUp.split("_");
         if (lcoaleSplitted.length > 2) {

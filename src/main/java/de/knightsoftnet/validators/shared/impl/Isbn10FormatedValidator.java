@@ -18,6 +18,7 @@ package de.knightsoftnet.validators.shared.impl;
 import de.knightsoftnet.validators.shared.Isbn10Formated;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.ISBNValidator;
 
 import java.util.Objects;
 
@@ -39,8 +40,7 @@ public class Isbn10FormatedValidator implements ConstraintValidator<Isbn10Format
   /**
    * apache commons class to check/calculate ISBN10 check sums.
    */
-  private static final org.apache.commons.validator.routines.ISBNValidator CHECK_ISBN =
-      new org.apache.commons.validator.routines.ISBNValidator();
+  private static final ISBNValidator CHECK_ISBN = new ISBNValidator();
 
   /**
    * {@inheritDoc} initialize the validator.

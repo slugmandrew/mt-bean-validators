@@ -30,5 +30,4 @@ public class PostalCodesMapConstantsImpl implements PostalCodesMapSharedConstant
   public Map<String, String> postalCodes() {
     return this.postalCodesMap;
   }
-
 }

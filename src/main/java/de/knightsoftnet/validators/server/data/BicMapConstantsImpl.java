@@ -30,5 +30,4 @@ public class BicMapConstantsImpl implements BicMapSharedConstants {
   public Map<String, String> bics() {
     return this.bicMap;
   }
-
 }

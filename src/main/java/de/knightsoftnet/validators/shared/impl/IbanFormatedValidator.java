@@ -96,5 +96,4 @@ public class IbanFormatedValidator implements ConstraintValidator<IbanFormated, 
 
     return CHECK_IBAN.isValid(IbanUtil.ibanCompress(valueAsString));
   }
-
 }
