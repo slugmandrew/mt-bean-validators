@@ -47,7 +47,7 @@ Included Validators - multi fields
 |LevenshteinDistance | `field1`, `field2`, `minDistance` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | calculates the levenshtein distance between the values of `field1` and `field2`, it must be equal or greater then the value of `minDistance`
 |MustBeEqual | `field1`, `field2` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | can be used for dependency checks e.G. for two password input fields, `field2` must have the same value as `field2`
 |MustNotBeEqual | `field1`, `field2` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | can be used for dependency checks e.G. for password new and old input fields, `field2` must not have the same value as `field2`
-|NotEmptyAlternateIfOtherHasValue | `field`, `fieldAlternate`, `fieldCompare` and `valueCompare` (no defaults) | can be used for dependency checks, `field` or alternate `fieldAlternate` must be filled if `fieldCompare` has the value `fieldCompare`
+|NotEmptyAlternateIfOtherHasValue | `field`, `fieldAlternate`, `fieldCompare` and `valueCompare` (no defaults) | can be used for dependency checks, `field` or alternate `fieldAlternate` must be filled if `fieldCompare` has the value `valueCompare`
 |NotEmptyAlternateIfOtherIsEmpty | `field`, `fieldAlternate` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` or alternate `fieldAlternate` must be filled if `fieldCompare` is empty
 |NotEmptyAlternateIfOtherIsNotEmpty | `field`, `fieldAlternate` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` or alternate `fieldAlternate` must be filled if `fieldCompare` is not empty
 |NotEmptyIfOtherHasValue | `field`, `fieldCompare` and `valueCompare` (no defaults) | can be used for dependency checks, `field` must be filled if `fieldCompare` contains `valueCompare`
@@ -71,4 +71,4 @@ Add the following to your POM file, that's all:
     </dependency>
 ```
 
-With version 0.20.0 I've switched from validation-api 1.0 to 1.1, if your project needs api 1.0 compatibility, please use version 0.10.1 of this packag.
+With version 0.20.0 I've switched from validation-api 1.0 to 1.1, if your project needs api 1.0 compatibility, please use version 0.10.1 of this package.
