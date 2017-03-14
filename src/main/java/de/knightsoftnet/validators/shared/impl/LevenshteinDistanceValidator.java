@@ -77,9 +77,9 @@ public class LevenshteinDistanceValidator
     }
     try {
       final String field1Value =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field1Name);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.field1Name);
       final String field2Value =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field2Name);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.field2Name);
       final boolean oneFieldIsEmpty =
           StringUtils.isEmpty(field1Value) || StringUtils.isEmpty(field2Value);
       if (oneFieldIsEmpty

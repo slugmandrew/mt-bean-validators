@@ -45,8 +45,12 @@ Included Validators - multi fields
 |EmptyIfOtherIsEmpty | `field` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` must be empty if `fieldCompare` is empty
 |EmptyIfOtherIsNotEmpty | `field` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` must be empty if `fieldCompare` is not empty
 |LevenshteinDistance | `field1`, `field2`, `minDistance` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | calculates the levenshtein distance between the values of `field1` and `field2`, it must be equal or greater then the value of `minDistance`
-|MustBeEqual | `field1`, `field2` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | can be used for dependency checks e.G. for two password input fields, `field2` must have the same value as `field2`
-|MustNotBeEqual | `field1`, `field2` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | can be used for dependency checks e.G. for password new and old input fields, `field2` must not have the same value as `field2`
+|MustBeEqual | `field1`, `field2` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | can be used for dependency checks e.G. for two password input fields, `field1` must have the same value as `field2`
+|MustNotBeEqual | `field1`, `field2` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | can be used for dependency checks e.G. for password new and old input fields, `field1` must not have the same value as `field2`
+|MustBeBigger | `field1`, `field2` (no defaults), `addErrorToField1` (default true) and `addErrorToField2` (default false) | can be used for range checks e.G. from/to dates, `field2` entry must be bigger then `field1` entry
+|MustBeBiggerOrEqual | `field1`, `field2` (no defaults), `addErrorToField1` (default true) and `addErrorToField2` (default false) | can be used for range checks e.G. from/to dates, `field2` entry must be bigger or equal then `field1` entry
+|MustBeSmaller | `field1`, `field2` (no defaults), `addErrorToField1` (default true) and `addErrorToField2` (default false) | can be used for range checks e.G. from/to dates, `field1` entry must be smaller then `field2` entry
+|MustBeSmallerOrEqual | `field1`, `field2` (no defaults), `addErrorToField1` (default true) and `addErrorToField2` (default false) | can be used for range checks e.G. from/to dates, `field1` entry must be smaller or equal then `field2` entry
 |NotEmptyAlternateIfOtherHasValue | `field`, `fieldAlternate`, `fieldCompare` and `valueCompare` (no defaults) | can be used for dependency checks, `field` or alternate `fieldAlternate` must be filled if `fieldCompare` has the value `valueCompare`
 |NotEmptyAlternateIfOtherIsEmpty | `field`, `fieldAlternate` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` or alternate `fieldAlternate` must be filled if `fieldCompare` is empty
 |NotEmptyAlternateIfOtherIsNotEmpty | `field`, `fieldAlternate` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` or alternate `fieldAlternate` must be filled if `fieldCompare` is not empty
@@ -67,7 +71,7 @@ Add the following to your POM file, that's all:
     <dependency>
       <groupId>de.knightsoft-net</groupId>
       <artifactId>mt-bean-validators</artifactId>
-      <version>0.30.0</version>
+      <version>0.31.0</version>
     </dependency>
 ```
 

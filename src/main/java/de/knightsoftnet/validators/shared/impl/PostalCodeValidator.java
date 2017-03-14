@@ -85,9 +85,9 @@ public class PostalCodeValidator implements ConstraintValidator<PostalCode, Obje
     }
     try {
       String countryCode =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCountryCode);
       final String postalCode =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldPostalCode);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldPostalCode);
       if (StringUtils.isEmpty(postalCode)) {
         return true;
       }

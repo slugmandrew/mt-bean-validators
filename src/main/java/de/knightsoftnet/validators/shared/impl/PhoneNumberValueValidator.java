@@ -119,9 +119,9 @@ public class PhoneNumberValueValidator implements ConstraintValidator<PhoneNumbe
     }
     try {
       String countryCode =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCountryCode);
       final String phoneNumber =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldPhoneNumber);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldPhoneNumber);
       if (StringUtils.isEmpty(phoneNumber)) {
         return true;
       }

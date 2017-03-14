@@ -86,9 +86,11 @@ public class BankCountryValidator implements ConstraintValidator<BankCountry, Ob
     }
     try {
       String valueCountry =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
-      final String valueIban = BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldIban);
-      final String valueBic = BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldBic);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCountryCode);
+      final String valueIban =
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldIban);
+      final String valueBic =
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldBic);
 
       if (StringUtils.isEmpty(valueIban) && StringUtils.isEmpty(valueBic)) {
         return true;

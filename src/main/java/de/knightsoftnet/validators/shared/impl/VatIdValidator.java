@@ -86,11 +86,12 @@ public class VatIdValidator implements ConstraintValidator<VatId, Object> {
     }
     try {
       String countryCode =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCountryCode);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCountryCode);
       if (StringUtils.isEmpty(countryCode)) {
         return true;
       }
-      final String vatId = BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldVatId);
+      final String vatId =
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldVatId);
       if (StringUtils.isEmpty(vatId)) {
         return true;
       }

@@ -76,9 +76,9 @@ public class EmptyIfOtherHasValueValidator
     }
     try {
       final String fieldCheckValue =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCheckName);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCheckName);
       final String fieldCompareValue =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCompareName);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCompareName);
       if (StringUtils.isNotEmpty(fieldCheckValue)
           && StringUtils.equals(this.valueCompare, fieldCompareValue)) {
         this.switchContext(pcontext);

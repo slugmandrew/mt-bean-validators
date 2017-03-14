@@ -76,11 +76,11 @@ public class NotEmptyAlternateIfOtherIsNotEmptyValidator
     }
     try {
       final String fieldCheckValue =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCheckName);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCheckName);
       final String fieldAlternateCheckValue =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldAlternateCheckName);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldAlternateCheckName);
       final String fieldCompareValue =
-          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.fieldCompareName);
+          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCompareName);
       if (StringUtils.isNotEmpty(fieldCompareValue) && StringUtils.isEmpty(fieldCheckValue)
           && StringUtils.isEmpty(fieldAlternateCheckValue)) {
         this.switchContext(pcontext);

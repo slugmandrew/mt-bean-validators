@@ -15,10 +15,8 @@
 
 package de.knightsoftnet.validators.shared.impl;
 
-import de.knightsoftnet.validators.shared.MustNotBeEqual;
+import de.knightsoftnet.validators.shared.MustBeBigger;
 import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
-
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
@@ -26,12 +24,12 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * Check if two field entries are not equal.
+ * Check if entry of field1 is Bigger then field2.
  *
  * @author Manfred Tremmel
  *
  */
-public class MustNotBeEqualValidator implements ConstraintValidator<MustNotBeEqual, Object> {
+public class MustBeBiggerValidator implements ConstraintValidator<MustBeBigger, Object> {
 
   /**
    * error message key.
@@ -62,7 +60,7 @@ public class MustNotBeEqualValidator implements ConstraintValidator<MustNotBeEqu
    * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
    */
   @Override
-  public final void initialize(final MustNotBeEqual pconstraintAnnotation) {
+  public final void initialize(final MustBeBigger pconstraintAnnotation) {
     this.message = pconstraintAnnotation.message();
     this.field1Name = pconstraintAnnotation.field1();
     this.field2Name = pconstraintAnnotation.field2();
@@ -86,13 +84,7 @@ public class MustNotBeEqualValidator implements ConstraintValidator<MustNotBeEqu
           BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field1Name);
       final Object field2Value =
           BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field2Name);
-      if ((field1Value == null
-          || field1Value instanceof String && StringUtils.isEmpty((String) field1Value))
-          && (field2Value == null
-              || field2Value instanceof String && StringUtils.isEmpty((String) field2Value))) {
-        return true;
-      }
-      if (Objects.equals(field1Value, field2Value)) {
+      if (!this.bigger(field1Value, field2Value)) {
         this.switchContext(pcontext);
         return false;
       }
@@ -101,6 +93,24 @@ public class MustNotBeEqualValidator implements ConstraintValidator<MustNotBeEqu
       this.switchContext(pcontext);
       return false;
     }
+  }
+
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  private boolean bigger(final Object pfield1Value, final Object pfield2Value) {
+    if (pfield1Value == null && pfield2Value == null) {
+      return true;
+    }
+    if (Objects.equals(pfield1Value, pfield2Value)) {
+      return false;
+    }
+    if (pfield1Value == null) {
+      return false;
+    }
+    if (pfield2Value == null) {
+      return true;
+    }
+    return pfield1Value instanceof Comparable
+        && ((Comparable) pfield1Value).compareTo(pfield2Value) > 0;
   }
 
   private void switchContext(final ConstraintValidatorContext pcontext) {

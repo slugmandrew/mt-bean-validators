@@ -18,7 +18,7 @@ package de.knightsoftnet.validators.shared.impl;
 import de.knightsoftnet.validators.shared.MustBeEqual;
 import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.Objects;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -80,11 +80,11 @@ public class MustBeEqualValidator implements ConstraintValidator<MustBeEqual, Ob
       return true;
     }
     try {
-      final String field1Value =
+      final Object field1Value =
           BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field1Name);
-      final String field2Value =
+      final Object field2Value =
           BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field2Name);
-      if (!StringUtils.equals(field1Value, field2Value)) {
+      if (!Objects.equals(field1Value, field2Value)) {
         this.switchContext(pcontext);
         return false;
       }

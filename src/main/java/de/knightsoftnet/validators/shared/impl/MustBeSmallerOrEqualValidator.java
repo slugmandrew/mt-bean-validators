@@ -15,35 +15,43 @@
 
 package de.knightsoftnet.validators.shared.impl;
 
-import de.knightsoftnet.validators.shared.EmptyIfOtherIsNotEmpty;
+import de.knightsoftnet.validators.shared.MustBeSmallerOrEqual;
 import de.knightsoftnet.validators.shared.util.BeanPropertyReaderUtil;
-
-import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * Check if a field is empty if another field is empty.
+ * Check if entry of field1 is smaller then field2.
  *
  * @author Manfred Tremmel
  *
  */
-public class EmptyIfOtherIsNotEmptyValidator
-    implements ConstraintValidator<EmptyIfOtherIsNotEmpty, Object> {
+public class MustBeSmallerOrEqualValidator
+    implements ConstraintValidator<MustBeSmallerOrEqual, Object> {
 
   /**
    * error message key.
    */
   private String message;
   /**
-   * field name to check.
+   * field1 name to compare.
    */
-  private String fieldCheckName;
+  private String field1Name;
   /**
-   * field name to compare.
+   * field2 name to compare.
    */
-  private String fieldCompareName;
+  private String field2Name;
+
+  /**
+   * add error to field1.
+   */
+  private boolean addErrorToField1;
+
+  /**
+   * add error to field2.
+   */
+  private boolean addErrorToField2;
 
   /**
    * {@inheritDoc} initialize the validator.
@@ -51,10 +59,12 @@ public class EmptyIfOtherIsNotEmptyValidator
    * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
    */
   @Override
-  public final void initialize(final EmptyIfOtherIsNotEmpty pconstraintAnnotation) {
+  public final void initialize(final MustBeSmallerOrEqual pconstraintAnnotation) {
     this.message = pconstraintAnnotation.message();
-    this.fieldCheckName = pconstraintAnnotation.field();
-    this.fieldCompareName = pconstraintAnnotation.fieldCompare();
+    this.field1Name = pconstraintAnnotation.field1();
+    this.field2Name = pconstraintAnnotation.field2();
+    this.addErrorToField1 = pconstraintAnnotation.addErrorToField1();
+    this.addErrorToField2 = pconstraintAnnotation.addErrorToField2();
   }
 
   /**
@@ -69,11 +79,11 @@ public class EmptyIfOtherIsNotEmptyValidator
       return true;
     }
     try {
-      final String fieldCheckValue =
-          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCheckName);
-      final String fieldCompareValue =
-          BeanPropertyReaderUtil.getNullSaveStringProperty(pvalue, this.fieldCompareName);
-      if (StringUtils.isNotEmpty(fieldCheckValue) && StringUtils.isNotEmpty(fieldCompareValue)) {
+      final Object field1Value =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field1Name);
+      final Object field2Value =
+          BeanPropertyReaderUtil.getNullSaveProperty(pvalue, this.field2Name);
+      if (!this.smaller(field1Value, field2Value)) {
         this.switchContext(pcontext);
         return false;
       }
@@ -84,9 +94,29 @@ public class EmptyIfOtherIsNotEmptyValidator
     }
   }
 
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  private boolean smaller(final Object pfield1Value, final Object pfield2Value) {
+    if (pfield1Value == null) {
+      return true;
+    }
+    if (pfield2Value == null) {
+      return false;
+    }
+    return pfield1Value instanceof Comparable
+        && ((Comparable) pfield1Value).compareTo(pfield2Value) <= 0;
+  }
+
   private void switchContext(final ConstraintValidatorContext pcontext) {
-    pcontext.disableDefaultConstraintViolation();
-    pcontext.buildConstraintViolationWithTemplate(this.message).addPropertyNode(this.fieldCheckName)
-        .addConstraintViolation();
+    if (this.addErrorToField1 || this.addErrorToField2) {
+      pcontext.disableDefaultConstraintViolation();
+      if (this.addErrorToField1) {
+        pcontext.buildConstraintViolationWithTemplate(this.message).addPropertyNode(this.field1Name)
+            .addConstraintViolation();
+      }
+      if (this.addErrorToField2) {
+        pcontext.buildConstraintViolationWithTemplate(this.message).addPropertyNode(this.field2Name)
+            .addConstraintViolation();
+      }
+    }
   }
 }
