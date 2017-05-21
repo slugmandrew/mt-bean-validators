@@ -472,7 +472,7 @@ public class VatIdValidator implements ConstraintValidator<VatId, Object> {
    * @return true if checksum is ok
    */
   private boolean checkEsVatId(final String pvatId) { // NOPMD
-    final boolean checkSumOk = true;
+    // final boolean checkSumOk = true;
     // if (pvatId.charAt(2) >= 'A' && pvatId.charAt(2) <= 'Z') {
     // final int checkSumEs;
     // if (pvatId.charAt(10) >= 'A' && pvatId.charAt(10) <= 'Z') {
@@ -570,7 +570,8 @@ public class VatIdValidator implements ConstraintValidator<VatId, Object> {
     // }
     // checkSumOk = calculatedCheckSumEs == checkSumEs;
     // }
-    return checkSumOk;
+    // return checkSumOk;
+    return true;
   }
 
   /**
