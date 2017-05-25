@@ -89,6 +89,34 @@ public class TinTestCases {
 
     correctCases.add(new TinTestBean(new PostalCodeTestBean("DE", null), "81872495633"));
 
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("DK", null), "1111111118"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("DK", null), "2110625629"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("EE", null), "21107190012"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("ES", null), "12345678Z"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("ES", null), "A58818501"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("FI", null), "010150-521X"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("FI", null), "211271-246U"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("FI", null), "100185-0000"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("FR", null), "1234567890123"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("FR", null), "1230987654123"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("HR", null), "94577403194"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("LT", null), "33309240064"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("LU", null), "1893120105732"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("NL", null), "999999990"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("NL", null), "123456782"));
+
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("PL", null), "44051401359"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("PL", null), "26083006995"));
+    correctCases.add(new TinTestBean(new PostalCodeTestBean("PL", null), "1234563218"));
+
     return correctCases;
   }
 
@@ -103,6 +131,21 @@ public class TinTestCases {
     wrongCases.add(new TinTestBean(new PostalCodeTestBean("AT", null), "909999907"));
 
     wrongCases.add(new TinTestBean(new PostalCodeTestBean("DE", null), "81872495634"));
+
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("DK", null), "1111111117"));
+
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("EE", null), "21107190013"));
+
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("ES", null), "12345678X"));
+
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("HR", null), "94577043194"));
+
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("LT", null), "33309240065"));
+
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("NL", null), "123456783"));
+
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("PL", null), "44051401358"));
+    wrongCases.add(new TinTestBean(new PostalCodeTestBean("PL", null), "1234563210"));
 
     return wrongCases;
   }

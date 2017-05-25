@@ -42,7 +42,7 @@ public class EmailTestCases {
    * @return correct test beans
    */
   public static final List<EmailTestBean> getCorrectTestBeans() {
-    final List<EmailTestBean> correctCases = new ArrayList<EmailTestBean>();
+    final List<EmailTestBean> correctCases = new ArrayList<>();
     correctCases.add(new EmailTestBean("jsmith@apache.org"));
     correctCases.add(new EmailTestBean("jsmith@apache.com"));
     correctCases.add(new EmailTestBean("jsmith@apache.net"));
@@ -57,10 +57,13 @@ public class EmailTestCases {
    * @return wrong test beans
    */
   public static final List<EmailTestBean> getWrongTestBeans() {
-    final List<EmailTestBean> wrongCases = new ArrayList<EmailTestBean>();
+    final List<EmailTestBean> wrongCases = new ArrayList<>();
+    wrongCases.add(new EmailTestBean(" jsmith@apache.org"));
     wrongCases.add(new EmailTestBean("jsmith@apache."));
     wrongCases.add(new EmailTestBean("jsmith@apache.c"));
     wrongCases.add(new EmailTestBean("someone@yahoo.mu-seum"));
+    wrongCases.add(new EmailTestBean(" jsmith@apache.org"));
+    wrongCases.add(new EmailTestBean("jsmith@apache.org "));
     return wrongCases;
   }
 }

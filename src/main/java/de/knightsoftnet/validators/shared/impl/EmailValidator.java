@@ -59,6 +59,10 @@ public class EmailValidator implements ConstraintValidator<Email, String> {
       // Email is to long, but that's handled by size annotation
       return true;
     }
+    if (!StringUtils.equals(pvalue, StringUtils.trim(pvalue))) {
+      // mail contains leading or trailing space(s), that's not correct
+      return false;
+    }
     return org.apache.commons.validator.routines.EmailValidator.getInstance().isValid(pvalue);
   }
 }

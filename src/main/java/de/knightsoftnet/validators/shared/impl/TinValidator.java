@@ -123,7 +123,29 @@ public class TinValidator implements ConstraintValidator<Tin, Object> {
         checkSumOk = this.checkAtTin(ptin);
         break;
       case "DE":
-        checkSumOk = this.checkDeTin(ptin);
+      case "HR":
+        checkSumOk = this.checkModulo11Tin(ptin);
+        break;
+      case "DK":
+        checkSumOk = this.checkDkTin(ptin);
+        break;
+      case "EE":
+      case "LT":
+        checkSumOk = this.checkEeTin(ptin);
+        break;
+      case "ES":
+        checkSumOk = this.checkEsTin(ptin);
+        break;
+      case "BA":
+      case "ME":
+      case "MK":
+        checkSumOk = this.checkUniqueMasterCitizenNumber(ptin);
+        break;
+      case "NL":
+        checkSumOk = this.checkNlTin(ptin);
+        break;
+      case "PL":
+        checkSumOk = this.checkPlTin(ptin);
         break;
       default:
         // for other countries, I haven't found checksum rules
@@ -141,24 +163,162 @@ public class TinValidator implements ConstraintValidator<Tin, Object> {
    */
   private boolean checkAtTin(final String ptin) {
     final int checkSum = ptin.charAt(8) - '0';
-    final int sum = ptin.charAt(0) - '0' + squareSum((ptin.charAt(1) - '0') * 2) + ptin.charAt(2)
-        - '0' + squareSum((ptin.charAt(3) - '0') * 2) + ptin.charAt(4) - '0'
-        + squareSum((ptin.charAt(5) - '0') * 2) + ptin.charAt(6) - '0'
-        + squareSum((ptin.charAt(7) - '0') * 2);
+    final int sum = ptin.charAt(0) - '0' + squareSum((ptin.charAt(1) - '0') * 2) //
+        + ptin.charAt(2) - '0' + squareSum((ptin.charAt(3) - '0') * 2) //
+        + ptin.charAt(4) - '0' + squareSum((ptin.charAt(5) - '0') * 2) //
+        + ptin.charAt(6) - '0' + squareSum((ptin.charAt(7) - '0') * 2);
     final int calculatedCheckSum = (80 - sum) % 10;
     return checkSum == calculatedCheckSum;
   }
 
   /**
-   * check the Tax Identification Number number, country version for Germany.
+   * check the Tax Identification Number number, country version for Denmark.
    *
    * @param ptin vat id to check
    * @return true if checksum is ok
    */
-  private boolean checkDeTin(final String ptin) {
+  private boolean checkDkTin(final String ptin) {
+    final int checkSum = ptin.charAt(9) - '0';
+    final int sum = ((ptin.charAt(0) - '0') * 4 //
+        + (ptin.charAt(1) - '0') * 2 //
+        + (ptin.charAt(2) - '0') * 3 //
+        + (ptin.charAt(3) - '0') * 7 //
+        + (ptin.charAt(4) - '0') * 6 //
+        + (ptin.charAt(5) - '0') * 5 //
+        + (ptin.charAt(6) - '0') * 4 //
+        + (ptin.charAt(7) - '0') * 3 //
+        + (ptin.charAt(8) - '0') * 2) //
+        % MODULO_11;
+    int calculatedCheckSum = MODULO_11 - sum;
+    if (calculatedCheckSum == 10) {
+      calculatedCheckSum = 0;
+    }
+    return checkSum == calculatedCheckSum;
+  }
+
+  /**
+   * check the Tax Identification Number number, country version for Estonia.
+   *
+   * @param ptin vat id to check
+   * @return true if checksum is ok
+   */
+  private boolean checkEeTin(final String ptin) {
     final int checkSum = ptin.charAt(10) - '0';
+    int calculatedCheckSum = ((ptin.charAt(0) - '0') * 1 //
+        + (ptin.charAt(1) - '0') * 2 //
+        + (ptin.charAt(2) - '0') * 3 //
+        + (ptin.charAt(3) - '0') * 4 //
+        + (ptin.charAt(4) - '0') * 5 //
+        + (ptin.charAt(5) - '0') * 6 //
+        + (ptin.charAt(6) - '0') * 7 //
+        + (ptin.charAt(7) - '0') * 8 //
+        + (ptin.charAt(8) - '0') * 9 //
+        + (ptin.charAt(9) - '0') * 1) //
+        % MODULO_11;
+    if (calculatedCheckSum == 10) {
+      calculatedCheckSum = ((ptin.charAt(0) - '0') * 3 //
+          + (ptin.charAt(1) - '0') * 4 //
+          + (ptin.charAt(2) - '0') * 5 //
+          + (ptin.charAt(3) - '0') * 6 //
+          + (ptin.charAt(4) - '0') * 7 //
+          + (ptin.charAt(5) - '0') * 8 //
+          + (ptin.charAt(6) - '0') * 9 //
+          + (ptin.charAt(7) - '0') * 1 //
+          + (ptin.charAt(8) - '0') * 2 //
+          + (ptin.charAt(9) - '0') * 3) //
+          % MODULO_11 % 10;
+    }
+    return checkSum == calculatedCheckSum;
+  }
+
+  /**
+   * check the Tax Identification Number number, country version for Spain.
+   *
+   * @param ptin vat id to check
+   * @return true if checksum is ok
+   */
+  private boolean checkEsTin(final String ptin) {
+    final char[] checkArray = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J',
+        'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+    final char checkSum = ptin.charAt(8);
+    final char calculatedCheckSum;
+    final int sum;
+    if (StringUtils.isNumeric(StringUtils.substring(ptin, 0, 8))) {
+      // dni
+      sum = Integer.parseInt(StringUtils.substring(ptin, 0, 8)) % 23;
+      calculatedCheckSum = checkArray[sum];
+    } else if (ptin.charAt(0) >= 'X' && ptin.charAt(0) <= 'Z') {
+      // cif
+      sum = Integer.parseInt(ptin.charAt(0) - '0' + StringUtils.substring(ptin, 1, 8)) % 23;
+      calculatedCheckSum = checkArray[sum];
+    } else {
+      // nie
+      final char letter = ptin.charAt(0);
+      final String number = StringUtils.substring(ptin, 1, 8);
+
+      int evenSum = 0;
+      int oddSum = 0;
+
+      for (int i = 0; i < number.length(); i++) {
+        int charAsNum = number.charAt(i) - '0';
+
+        // Odd positions (Even index equals to odd position. i=0 equals first position)
+        if (i % 2 == 0) {
+          // Odd positions are multiplied first.
+          charAsNum *= 2;
+
+          // If the multiplication is bigger than 10 we need to adjust
+          oddSum += charAsNum < 10 ? charAsNum : charAsNum - 9;
+
+          // Even positions
+          // Just sum them
+        } else {
+          evenSum += charAsNum;
+        }
+
+      }
+
+      final int control_digit = 10 - (evenSum + oddSum) % 10;
+      final char control_letter = "JABCDEFGHI".charAt(control_digit);
+
+      switch (letter) {
+        case 'A':
+        case 'B':
+        case 'E':
+        case 'H':
+          // Control must be a digit
+          calculatedCheckSum = (char) (control_digit + '0');
+          break;
+        case 'K':
+        case 'P':
+        case 'Q':
+        case 'S':
+          // Control must be a letter
+          calculatedCheckSum = control_letter;
+          break;
+        default:
+          // Can be either
+          if (control_letter == checkSum) {
+            calculatedCheckSum = control_letter;
+          } else {
+            calculatedCheckSum = (char) (control_digit + '0');
+          }
+          break;
+      }
+    }
+    return checkSum == calculatedCheckSum;
+  }
+
+  /**
+   * check the Tax Identification Number number, default modulo 11.
+   *
+   * @param ptin vat id to check
+   * @return true if checksum is ok
+   */
+  private boolean checkModulo11Tin(final String ptin) {
+    final int checkSum = ptin.charAt(ptin.length() - 1) - '0';
     int sum = 10;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < ptin.length() - 1; i++) {
       int summe = (ptin.charAt(i) - '0' + sum) % 10;
       if (summe == 0) {
         summe = 10;
@@ -168,6 +328,86 @@ public class TinValidator implements ConstraintValidator<Tin, Object> {
     int calculatedCheckSum = MODULO_11 - sum;
     if (calculatedCheckSum == 10) {
       calculatedCheckSum = 0;
+    }
+    return checkSum == calculatedCheckSum;
+  }
+
+  /**
+   * check the Tax Identification Number number, country version for countries using unique master
+   * citizen number .
+   *
+   * @param ptin vat id to check
+   * @return true if checksum is ok
+   */
+  private boolean checkUniqueMasterCitizenNumber(final String ptin) {
+    final int checkSum = ptin.charAt(12) - '0';
+    final int sum = ((ptin.charAt(0) - '0' + ptin.charAt(6) - '0') * 7 //
+        + (ptin.charAt(1) - '0' + ptin.charAt(7) - '0') * 6 //
+        + (ptin.charAt(2) - '0' + ptin.charAt(8) - '0') * 5 //
+        + (ptin.charAt(3) - '0' + ptin.charAt(9) - '0') * 4 //
+        + (ptin.charAt(4) - '0' + ptin.charAt(10) - '0') * 3 //
+        + (ptin.charAt(5) - '0' + ptin.charAt(11) - '0') * 2) //
+        % MODULO_11;
+    int calculatedCheckSum = MODULO_11 - sum;
+    if (calculatedCheckSum == 10) {
+      calculatedCheckSum = 0;
+    }
+    return checkSum == calculatedCheckSum;
+  }
+
+  /**
+   * check the Tax Identification Number number, country version for Netherlands.
+   *
+   * @param ptin vat id to check
+   * @return true if checksum is ok
+   */
+  private boolean checkNlTin(final String ptin) {
+    final int checkSum = ptin.charAt(8) - '0';
+    int sum = 0;
+    for (int i = 0; i < ptin.length() - 1; i++) {
+      sum += (ptin.charAt(i) - '0') * (9 - i);
+    }
+    sum -= checkSum;
+    return sum % 11 == 0;
+  }
+
+  /**
+   * check the Tax Identification Number number, country version for Poland.
+   *
+   * @param ptin vat id to check
+   * @return true if checksum is ok
+   */
+  private boolean checkPlTin(final String ptin) {
+    final int checkSum = ptin.charAt(ptin.length() - 1) - '0';
+    int calculatedCheckSum;
+    if (StringUtils.length(ptin) == 11) {
+      // PESEL
+      final int sum = (ptin.charAt(0) - '0') * 1 //
+          + (ptin.charAt(1) - '0') * 3 //
+          + (ptin.charAt(2) - '0') * 7 //
+          + (ptin.charAt(3) - '0') * 9 //
+          + (ptin.charAt(4) - '0') * 1 //
+          + (ptin.charAt(5) - '0') * 3 //
+          + (ptin.charAt(6) - '0') * 7 //
+          + (ptin.charAt(7) - '0') * 9 //
+          + (ptin.charAt(8) - '0') * 1 //
+          + (ptin.charAt(9) - '0') * 3;
+      calculatedCheckSum = sum % 10;
+      if (calculatedCheckSum != 0) {
+        calculatedCheckSum = 10 - sum % 10;
+      }
+    } else {
+      // NIP
+      final int sum = (ptin.charAt(0) - '0') * 6 //
+          + (ptin.charAt(1) - '0') * 5 //
+          + (ptin.charAt(2) - '0') * 7 //
+          + (ptin.charAt(3) - '0') * 2 //
+          + (ptin.charAt(4) - '0') * 3 //
+          + (ptin.charAt(5) - '0') * 4 //
+          + (ptin.charAt(6) - '0') * 5 //
+          + (ptin.charAt(7) - '0') * 6 //
+          + (ptin.charAt(8) - '0') * 7;
+      calculatedCheckSum = sum % MODULO_11;
     }
     return checkSum == calculatedCheckSum;
   }
