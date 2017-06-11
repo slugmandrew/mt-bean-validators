@@ -16,7 +16,7 @@
 	<groupId>de.knightsoft-net</groupId>
 	<artifactId>mt-bean-validators</artifactId>
 	<packaging>jar</packaging>
-	<version>0.42.3-SNAPSHOT</version>
+	<version>0.42.3</version>
 	<name>MT Bean Validators</name>
 	<inceptionYear>2016</inceptionYear>
 	<description>
@@ -108,7 +108,7 @@
 		<maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
 		<maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
 		<maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-		<checkstyle.version>7.8</checkstyle.version>
+		<checkstyle.version>7.8.1</checkstyle.version>
 		<maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
 		<findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
 		<cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>

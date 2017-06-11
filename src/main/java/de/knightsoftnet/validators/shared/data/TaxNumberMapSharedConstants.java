@@ -18,11 +18,11 @@ package de.knightsoftnet.validators.shared.data;
 import java.util.Map;
 
 /**
- * map of tax identity number regex values for the different countries.
+ * map of tax number regex values for the different countries.
  *
  * @author Manfred Tremmel
  *
  */
-public interface TinMapSharedConstants {
-  Map<String, String> tins();
+public interface TaxNumberMapSharedConstants {
+  Map<String, String> taxNumbers();
 }

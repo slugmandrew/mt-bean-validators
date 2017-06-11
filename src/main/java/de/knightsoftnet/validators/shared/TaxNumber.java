@@ -15,7 +15,7 @@
 
 package de.knightsoftnet.validators.shared;
 
-import de.knightsoftnet.validators.shared.impl.TinValidator;
+import de.knightsoftnet.validators.shared.impl.TaxNumberValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -30,10 +30,10 @@ import javax.validation.Payload;
  * The annotated bean must contain two properties:
  * <ul>
  * <li>country code (option <code>fieldCountryCode</code>)</li>
- * <li>tin (option <code>fieldTin</code>)</li>
+ * <li>tax number (option <code>fieldTaxNumber</code>)</li>
  * </ul>
- * The Tax Identification Number (TIN) is checked against country specific rules for validity.
- * Checksum checks are done, when available.<br>
+ * The Tax Number is checked against country specific rules for validity. Checksum checks are done,
+ * when available.<br>
  * Supported types are beans, <code>null</code> elements are considered valid.<br>
  * If <code>allowLowerCaseCountryCode</code> is set to true, lower case country codes are accepted.
  *
@@ -41,14 +41,14 @@ import javax.validation.Payload;
  *
  */
 @Documented
-@Constraint(validatedBy = TinValidator.class)
+@Constraint(validatedBy = TaxNumberValidator.class)
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Tin {
+public @interface TaxNumber {
   /**
    * localized message.
    */
-  String message() default "{deKnightsoftnetValidatorsSharedValidationTinMessage}";
+  String message() default "{deKnightsoftnetValidatorsSharedValidationTaxNumberMessage}";
 
   /**
    * groups to use.
@@ -73,10 +73,10 @@ public @interface Tin {
   /**
    * field name of the vat id field.
    */
-  String fieldTin() default "tin";
+  String fieldTaxNumber() default "taxNumber";
 
   /**
-   * Defines several {@code @Tin} annotations on the same element.
+   * Defines several {@code @TaxNumber} annotations on the same element.
    */
   @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
   @Retention(RetentionPolicy.RUNTIME)
@@ -85,6 +85,6 @@ public @interface Tin {
     /**
      * must be filled if other is filled value.
      */
-    Tin[] value();
+    TaxNumber[] value();
   }
 }

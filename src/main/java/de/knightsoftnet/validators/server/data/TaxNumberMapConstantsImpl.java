@@ -13,16 +13,21 @@
  * the License.
  */
 
-package de.knightsoftnet.validators.shared.data;
+package de.knightsoftnet.validators.server.data;
+
+import de.knightsoftnet.validators.shared.data.TaxNumberMapSharedConstants;
 
 import java.util.Map;
 
-/**
- * map of tax identity number regex values for the different countries.
- *
- * @author Manfred Tremmel
- *
- */
-public interface TinMapSharedConstants {
-  Map<String, String> tins();
+public class TaxNumberMapConstantsImpl implements TaxNumberMapSharedConstants {
+  private final Map<String, String> taxNumberMap;
+
+  public TaxNumberMapConstantsImpl(final Map<String, String> pmap) {
+    this.taxNumberMap = pmap;
+  }
+
+  @Override
+  public Map<String, String> taxNumbers() {
+    return this.taxNumberMap;
+  }
 }

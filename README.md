@@ -60,6 +60,7 @@ Included Validators - multi fields
 |NotEmptyIfOtherIsNotEmpty | `field` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` must be filled if `fieldCompare` is not empty
 |PhoneNumberValue | `fieldCountryCode` (default: countryCode), `fieldPhoneNumber` (default phoneNumber), `allowLowerCaseCountryCode` (default: false), `allowDin5008`, `allowE123`, `allowUri`, `allowMs`, and `allowCommon` (default for all true) | checks phone number based on country- and area code data, with the parameters you can disable formats
 |PostalCode | `fieldCountryCode` (default: countryCode), `fieldPostalCode` (default postalCode) and `allowLowerCaseCountryCode` (default: false) | postal code, post code or zip is validated using country specific rules, the country code is read from `fieldCountryCode`, there are rules for 161 countries included
+|TaxNumber | `fieldCountryCode` (default: countryCode), `fieldTaxNumber` (default taxNumber) and `allowLowerCaseCountryCode` (default: false) | Tax Number is used in different countries and has country depending tests of format and checksums. Most countries have only Tax Identification Number and no separate Tax Number, in this case this validation also works
 |Tin | `fieldCountryCode` (default: countryCode), `fieldTin` (default tin) and `allowLowerCaseCountryCode` (default: false) | Tax Identification Number (TIN) is used in different countries and has country depending tests of format and checksums 
 |VatId | `fieldCountryCode` (default: countryCode), `fieldVatId` (default vatId) and `allowLowerCaseCountryCode` (default: false) | vat registration number is validated using country specific rules, the country code is read from `fieldCountryCode`, there are format rules for 49 and checksum checks for 16 countries included
 
@@ -73,7 +74,7 @@ Add the following to your POM file, that's all:
     <dependency>
       <groupId>de.knightsoft-net</groupId>
       <artifactId>mt-bean-validators</artifactId>
-      <version>0.42.3-SNAPSHOT</version>
+      <version>0.42.3</version>
     </dependency>
 ```
 
