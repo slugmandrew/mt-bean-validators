@@ -42,6 +42,7 @@ Included Validators - multi fields
 |Annotation | Parameters | Checks
 |------|----------|----------
 |BankCountry | `fieldCountryCode` (default = countryCode), `fieldIban` (default = iban), `fieldBic` (default = bic) and `allowLowerCaseCountryCode` (default: false) | in a sepa bank account, iban and bic contains the country code, both must match and can be validated against another countryCode field
+|EmailMustHaveSameDomain | `field1`, `field2` (no defaults), `addErrorToField1` and `addErrorToField2` (default true) | can be used to check if two eMails have the same domain
 |EmptyIfOtherHasValue | `field`, `fieldCompare` and `valueCompare` (no defaults) | can be used for dependency checks, `field` must be empty if `fieldCompare` contains `valueCompare`
 |EmptyIfOtherIsEmpty | `field` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` must be empty if `fieldCompare` is empty
 |EmptyIfOtherIsNotEmpty | `field` and `fieldCompare` (no defaults) | can be used for dependency checks, `field` must be empty if `fieldCompare` is not empty
@@ -74,7 +75,7 @@ Add the following to your POM file, that's all:
     <dependency>
       <groupId>de.knightsoft-net</groupId>
       <artifactId>mt-bean-validators</artifactId>
-      <version>0.42.3</version>
+      <version>0.43.0</version>
     </dependency>
 ```
 
