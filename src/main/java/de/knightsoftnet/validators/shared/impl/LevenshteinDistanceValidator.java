@@ -70,6 +70,7 @@ public class LevenshteinDistanceValidator
     this.addErrorToField2 = pconstraintAnnotation.addErrorToField2();
   }
 
+  @SuppressWarnings("deprecation")
   @Override
   public boolean isValid(final Object pvalue, final ConstraintValidatorContext pcontext) {
     if (pvalue == null) {

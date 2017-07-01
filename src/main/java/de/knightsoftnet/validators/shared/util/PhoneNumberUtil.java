@@ -185,7 +185,7 @@ public class PhoneNumberUtil {
       return null;
     }
     final ValueWithPos<PhoneNumberData> formatedValue = this.parsePhoneNumber(
-        new ValueWithPos<String>(pphoneNumber, -1), pphoneNumberData, pcountryData);
+        new ValueWithPos<>(pphoneNumber, -1), pphoneNumberData, pcountryData);
     return formatedValue.getValue();
   }
 
@@ -360,7 +360,7 @@ public class PhoneNumberUtil {
         cursorpos = calculatedlength;
       }
     }
-    return new ValueWithPos<PhoneNumberData>(new PhoneNumberData(pphoneNumberData), cursorpos);
+    return new ValueWithPos<>(new PhoneNumberData(pphoneNumberData), cursorpos);
   }
 
   /**
@@ -569,7 +569,7 @@ public class PhoneNumberUtil {
         resultNumber.append(pphoneNumberData.getValue().getExtension());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -700,7 +700,7 @@ public class PhoneNumberUtil {
         resultNumber.append(pphoneNumberData.getValue().getExtension());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -916,7 +916,7 @@ public class PhoneNumberUtil {
         resultNumber.append(pphoneNumberData.getValue().getExtension());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -1046,7 +1046,7 @@ public class PhoneNumberUtil {
         resultNumber.append(pphoneNumberData.getValue().getExtension());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -1147,7 +1147,7 @@ public class PhoneNumberUtil {
         resultNumber.append(pphoneNumberData.getValue().getExtension());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -1261,7 +1261,7 @@ public class PhoneNumberUtil {
     } else if (cursor > resultNumber.length()) {
       cursor = resultNumber.length();
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -1369,7 +1369,7 @@ public class PhoneNumberUtil {
         resultNumber.append(pphoneNumberData.getValue().getExtension());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -1617,7 +1617,7 @@ public class PhoneNumberUtil {
         resultNumber.append(pphoneNumberData.getValue().getExtension());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
   /**
@@ -1735,7 +1735,7 @@ public class PhoneNumberUtil {
       resultNumber.append(' ');
       if (StringUtils.isNotBlank(pphoneNumberData.getValue().getAreaCode())) {
         final ValueWithPos<String> areaCode = this.groupIntoParts(
-            new ValueWithPos<String>(pphoneNumberData.getValue().getAreaCode(), cursor),
+            new ValueWithPos<>(pphoneNumberData.getValue().getAreaCode(), cursor),
             resultNumber.length(), 2);
         cursor = areaCode.getPos();
         resultNumber.append(areaCode.getValue());
@@ -1745,7 +1745,7 @@ public class PhoneNumberUtil {
       }
       resultNumber.append(" / ");
       final ValueWithPos<String> lineNumber = this.groupIntoParts(
-          new ValueWithPos<String>(pphoneNumberData.getValue().getLineNumber(), cursor),
+          new ValueWithPos<>(pphoneNumberData.getValue().getLineNumber(), cursor),
           resultNumber.length(), 2);
       cursor = lineNumber.getPos();
       resultNumber.append(lineNumber.getValue());
@@ -1755,19 +1755,19 @@ public class PhoneNumberUtil {
         }
         resultNumber.append(" - ");
         final ValueWithPos<String> extension = this.groupIntoParts(
-            new ValueWithPos<String>(pphoneNumberData.getValue().getExtension(), cursor),
+            new ValueWithPos<>(pphoneNumberData.getValue().getExtension(), cursor),
             resultNumber.length(), 2);
         cursor = extension.getPos();
         resultNumber.append(extension.getValue());
       }
     }
-    return new ValueWithPos<String>(StringUtils.trimToNull(resultNumber.toString()), cursor);
+    return new ValueWithPos<>(StringUtils.trimToNull(resultNumber.toString()), cursor);
   }
 
-  private final ValueWithPos<String> groupIntoParts(final ValueWithPos<String> pstring,
-      final int plength, final int pblockLength) {
+  private ValueWithPos<String> groupIntoParts(final ValueWithPos<String> pstring, final int plength,
+      final int pblockLength) {
     if (pstring == null || pstring.getValue() == null) {
-      return new ValueWithPos<String>(StringUtils.EMPTY, pblockLength);
+      return new ValueWithPos<>(StringUtils.EMPTY, pblockLength);
     }
     final StringBuilder formatedSb = new StringBuilder();
     int pos = 0;
@@ -1787,7 +1787,7 @@ public class PhoneNumberUtil {
     return pstring;
   }
 
-  private final String groupIntoParts(final String pstring, final int pblockLength) {
+  private String groupIntoParts(final String pstring, final int pblockLength) {
     if (pstring == null) {
       return StringUtils.EMPTY;
     }
