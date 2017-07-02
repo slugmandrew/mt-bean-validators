@@ -3,8 +3,8 @@ mt-bean-validators
 
 A collection of JSR-303/JSR-349 bean validators.
 
-Included Validators - single field
-----------------------------------
+Included Validators - field-level constraints
+---------------------------------------------
 
 |Annotation | Parameters | Checks
 |------|----------|----------
@@ -36,8 +36,8 @@ Included Validators - single field
 |Url | - | uses url-check routines of apache commons validator
 
 
-Included Validators - multi fields
-----------------------------------
+Included Validators - class-level constraint
+--------------------------------------------
 
 |Annotation | Parameters | Checks
 |------|----------|----------
